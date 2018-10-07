@@ -1,0 +1,83 @@
+<strong>Proceso ProductoMN</strong>
+
+<p>
+  Autopopular Formulario
+</p>
+  
+<form role="form" class="form-horizontal">
+
+  <script cam-script type="text/form-script">
+	
+  </script>
+  
+  <div class="control-group">
+    <div class="controls">
+    	
+    	<label for="cotizacion" class="control-label">Nombre del Presupuesto</label>
+      	<input type="text" 
+             cam-variable-name="cotizacion"
+             cam-variable-type="String"
+             class="form-control" />
+    
+    	<label for="CATEGORIA_SELECCIONADA" class="control-label">Categoria</label>
+    	<input type="text" 
+    	   cam-variable-name="CATEGORIA_PRODUCTO"
+    	   class="form-control"
+     	   readonly>
+   		   		
+     	<label for="PRODUCTO_SELECCIONADO" class="control-label">Producto</label>
+   		<input type="text" 
+    	   cam-variable-name="PRODUCTO_SELECCIONADO"
+    	   class="form-control"
+     	   readonly>
+     	 
+     	<label class="control-label">Cotización de la Moneda</label>   
+     	<input type="text" 
+    	   cam-variable-name="COTIZACION_MONEDA"
+    	   class="form-control"
+     	   readonly>
+     	
+     	      		
+   		<label for="moneda" class="control-label">Moneda</label>
+      	<select cam-variable-name="moneda" cam-variable-type="String" class="form-control">
+  			<option value="dolares" checked>U$S</option>
+  			<option value="pesos" >$</option>
+	 	 </select>
+   		   		   		
+     	<label for="PRECIO" class="control-label">Precio</label>
+   		<input type="text" 
+    	   cam-variable-name="PRECIO"
+    	   class="form-control">
+   		   		
+   		<label for="DESCRIPCION" class="control-label">Descripcion</label>   		
+   		<br>
+   	    <textarea cam-variable-name="DESCRIPCION" cam-variable-type="String" rows= 3  class= "form-control" ></textarea>
+   	       	    
+   	    <label for="DIMENSIONES" class="control-label">Dimensiones</label>
+   		<input type="text" 
+    	   cam-variable-name="DIMENSIONES"
+    	   class="form-control">
+   		   		
+   		<label for="tipoCliente" class="control-label">Tipo de Cliente</label>
+      	<select cam-variable-name="tipoCliente" cam-variable-type="String" class="form-control">
+  			<option value="consumidor" checked>CONSUMIDOR FINAL</option>
+  			<option value="cliente">CLIENTE</option>
+  			<option value="lead">LEAD</option>
+  			<option value="prospect">PROSPECT</option>
+	  	</select> 
+   		
+   		<label for="DESCUENTO" class="control-label">Descuento %</label>
+   		<input type="text"
+       		cam-variable-name="DESCUENTO"
+       		cam-variable-type="String"
+       		class="form-control" />
+   		   		
+   		<label for="SOBRECOSTO" class="control-label">Sobrecosto %</label>
+   		<input type="text"
+       		cam-variable-name="SOBRECOSTO"
+       		cam-variable-type="String"
+       		class="form-control" />
+   		   		   	    
+  	</div>
+ </div>
+</form>

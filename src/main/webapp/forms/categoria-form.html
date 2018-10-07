@@ -1,0 +1,33 @@
+<strong>Proceso ProductoMN</strong>
+
+<p>
+  Seleccionar Categoria
+</p>
+
+<form role="form" class="form-horizontal">
+
+  <script cam-script type="text/form-script">
+
+	// En el siguiente formulario primero se cargan las categorías de la web de Menini-Nicola 
+	// a través de la lógica implementada en java (mediante la técnica de web scrapping).
+	// Las categorias del scrapping se setean en "CATEGORIAS_DISPONIBLES"
+	// y son desplegadas en el control html 'select'. 
+	// El indice de la categoria seleccionada se obtiene en el proximo task form
+	// a traves del nombre "categoria"
+  </script>
+
+  <div class="control-group">
+    <div class="controls">
+    
+      <label for="categoria" class="control-label">Categoria</label>
+      <select 
+      		 cam-variable-name="categoria"
+             cam-variable-type="String"
+             cam-choices="CATEGORIAS_DISPONIBLES"
+             required
+             class="form-control">
+	  </select>
+	  
+  	</div>
+ </div>
+</form>

@@ -10,11 +10,42 @@
   <div class="control-group">
     <label class="control-label">Your Name</label>
     <div class="controls">
+      
+           <label for="CLIENTE" class="control-label">Cliente</label>
       <input type="text" 
-             cam-variable-name="name"
+             cam-variable-name="CLIENTE"
              cam-variable-type="String"
+             maxlength=100
              required
              class="form-control" />
+    
+      <label for="EMAIL" class="control-label">E-mail</label>
+      <input type="text" 
+             cam-variable-name="EMAIL"
+             cam-variable-type="String"
+             maxlength=50
+             required
+             ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/"
+             ng-model="EMAIL"
+             class="form-control" />
+             
+      <label for="TEL" class="control-label">TEL</label>
+      <input type="text" 
+             cam-variable-name="TEL"
+             cam-variable-type="String"
+             ng-pattern="/^\d{9}$/"
+             ng-model="TEL"
+             class="form-control" />
+             
+      <label for="CELULAR" class="control-label">CELULAR</label>
+      <input type="text" 
+             cam-variable-name="CELULAR"
+             cam-variable-type="String"
+             required
+             ng-pattern="/^0[\d]{7}$/"
+             ng-model="CELULAR" 
+             class="form-control" />
+      
     </div>
   </div>
 

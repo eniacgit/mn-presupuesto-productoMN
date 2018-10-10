@@ -43,11 +43,13 @@ public class AutopopularDelegate implements JavaDelegate {
 	    String descuento= "0";
 	    String sobrecosto= "0";
 	    
-	    //String nombrePresupuesto= facade.generarNroCotizacionFechaActual();
+	    String nombrePresupuesto= facade.generarNroCotizacionFechaActual();
+	    
 	    //obtener cotización de la moneda
 	    
 	    
 	    //autocompletar los campos restantes
+	    execution.setVariable("COTIZACION", nombrePresupuesto);
 	    execution.setVariable("PRECIO", productoMN.getPrecio());
 	    execution.setVariable("DESCRIPCION", productoMN.getDescripcion());
 	    execution.setVariable("DIMENSIONES", productoMN.getDimensiones());

@@ -4,18 +4,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.persistencia.*;
-import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.*;;
-
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.persistencia.AccesoBD;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOCategoria;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOPrecio;
 
 
 public class Fachada{
 	
-	private AccesoBD accesoBD;
+	//private AccesoBD accesoBD;
 	
 	public void insertarCategoria(VOCategoria categoria)
 	{
 		String nombre= categoria.getNombre();
+		AccesoBD accesoBD = new AccesoBD();
 
 		accesoBD.insertarCategoria(nombre);
 	}
@@ -23,7 +24,7 @@ public class Fachada{
 	public int  cantidadRegistrosCategoria()
 	{
 		int cantidadRegistrosCategoria=0;
-		
+		AccesoBD accesoBD = new AccesoBD();
 		cantidadRegistrosCategoria= accesoBD.cantidadRegistrosCategoria();
 		
 		return cantidadRegistrosCategoria;
@@ -66,6 +67,7 @@ public class Fachada{
 		String fecha = dateFormat.format(cal.getTime());
 		String nroCotizacion = fecha  + "-01";
 		int cont=1;
+		AccesoBD accesoBD = new AccesoBD();
 		while (accesoBD.existeNroCotizacion(nroCotizacion)) {
 			cont++;
 			nroCotizacion = fecha + "-" + String.format("%02d",cont);

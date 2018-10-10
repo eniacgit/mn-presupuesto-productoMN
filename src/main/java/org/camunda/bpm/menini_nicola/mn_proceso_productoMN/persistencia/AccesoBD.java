@@ -166,19 +166,17 @@ public class AccesoBD {
 	}
 	
 	public boolean existeNroCotizacion(String nroCotizacion) {
-			// Retorna true si el nro de la cotizacion ya existe en la bd
-			boolean existeCliente= false;
-			Connection con= this.conectarBD();
-			Consultas consultas= new Consultas();			
-			String select= consultas.existeNroCotizacion();
+		// Retorna true si el nro de la cotizacion ya existe en la bd
+			boolean existeCliente = false;
+			Connection con = con = this.conectarBD();
+			Consultas consultas = new Consultas();
 			
-			PreparedStatement pstmt= null;
-			ResultSet rs= null;
+			String select = consultas.existeNroCotizacion();
 			try {
-				con.prepareStatement(select);
+				PreparedStatement pstmt = con.prepareStatement(select);
 				pstmt.setString(1, nroCotizacion);
 				
-				rs = pstmt.executeQuery();
+				ResultSet rs = pstmt.executeQuery();
 				if (rs.next())
 					existeCliente = true;
 				rs.close();
@@ -186,23 +184,7 @@ public class AccesoBD {
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				Log.error("error al verificar existencia de nombre de cotizacion"+e);
 				e.printStackTrace();
-			}finally {
-				if(pstmt != null)
-				{
-					try
-					{
-						rs.close();
-						pstmt.close();
-						this.desconectarBD(con);
-					}
-					catch(SQLException e)
-					{
-						Log.error("error al verificar existencia de nombre de cotizacion"+e);
-						e.printStackTrace();
-					}
-				}
 			}		
 			this.desconectarBD(con);
 			return existeCliente;

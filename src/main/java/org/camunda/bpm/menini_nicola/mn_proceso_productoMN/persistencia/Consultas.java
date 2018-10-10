@@ -52,4 +52,9 @@ public class Consultas {
 		String consulta="SELECT COUNT(*) FROM mn_producto;";
 		return consulta;
 	}
+	
+	public String existeNroCotizacion() {
+		String consulta ="select cotizacion from mn_presupuesto where cotizacion=?";
+		return consulta;
+	}
 }

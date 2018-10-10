@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.logica.*;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOProductoMN;
 
 public class AutopopularDelegate implements JavaDelegate {
@@ -35,10 +36,24 @@ public class AutopopularDelegate implements JavaDelegate {
 	    VOProductoMN productoMN= new VOProductoMN();
 	    productoMN= ScrappingWeb.obtenerProducto(productoTexto);
 	    
+	    //obtener nombre del presupuesto
+	    Fachada facade= new Fachada();
+	    
+	    //setear valores iniciales
+	    String descuento= "0";
+	    String sobrecosto= "0";
+	    
+	    //String nombrePresupuesto= facade.generarNroCotizacionFechaActual();
+	    //obtener cotización de la moneda
+	    
+	    
 	    //autocompletar los campos restantes
 	    execution.setVariable("PRECIO", productoMN.getPrecio());
 	    execution.setVariable("DESCRIPCION", productoMN.getDescripcion());
 	    execution.setVariable("DIMENSIONES", productoMN.getDimensiones());
+	    execution.setVariable("DESCUENTO", descuento);
+	    execution.setVariable("SOBRECOSTO", sobrecosto);
+	    //execution.setVariable("COTIZACION", nombrePresupuesto);
 	    
 	}
 

@@ -27,8 +27,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.ScrappingWeb;
-import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.logica.IFachada;
+
 
 public class CategoriaDelegate implements JavaDelegate{
 

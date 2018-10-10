@@ -29,9 +29,9 @@
   <div class="control-group">
     <div class="controls">
     
-    	<label for="cotizacion" class="control-label">Nombre del Presupuesto</label>
+    	<label for="COTIZACION" class="control-label">Nombre del Presupuesto</label>
       	<input type="text" 
-             cam-variable-name="cotizacion"
+             cam-variable-name="COTIZACION"
              cam-variable-type="String"
              class="form-control" />
     
@@ -47,13 +47,13 @@
     	   class="form-control"
      	   readonly>
      	   
-     	<label class="control-label">Cotización de la Moneda</label>
-     	<input type="text" 
-    	   cam-variable-name="COTIZACION_MONEDA"
-    	   class="form-control"
-     	readonly>
+<!--      	<label class="control-label">Cotización de la Moneda</label> -->
+<!--      	<input type="text"  -->
+<!--     	   cam-variable-name="COTIZACION_MONEDA" -->
+<!--     	   class="form-control" -->
+<!--      	readonly> -->
    		
-   		<br>
+<!--    		<br> -->
    		   		
    		<label class="control-label">Moneda</label>
       	<address>		      
@@ -99,7 +99,14 @@
        		cam-variable-type="String"
        		class="form-control" 
        		readonly/>
-       		    
+       	   		
+   		<label for="PRECIO_FINAL" class="control-label">Precio Final</label>
+   		<input type="text"
+       		cam-variable-name="PRECIO_FINAL"
+       		cam-variable-type="String"
+       		class="form-control" 
+       		readonly/>
+       	
   	</div>
  </div>
 </form>

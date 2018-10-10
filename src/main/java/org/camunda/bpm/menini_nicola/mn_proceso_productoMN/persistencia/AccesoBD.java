@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
 import org.jfree.util.Log;
 
 
@@ -163,6 +164,49 @@ public class AccesoBD {
 		
 		return numeroFilas;
 	}
+	
+	public boolean existeNroCotizacion(String nroCotizacion) {
+			// Retorna true si el nro de la cotizacion ya existe en la bd
+			boolean existeCliente= false;
+			Connection con= this.conectarBD();
+			Consultas consultas= new Consultas();			
+			String select= consultas.existeNroCotizacion();
+			
+			PreparedStatement pstmt= null;
+			ResultSet rs= null;
+			try {
+				con.prepareStatement(select);
+				pstmt.setString(1, nroCotizacion);
+				
+				rs = pstmt.executeQuery();
+				if (rs.next())
+					existeCliente = true;
+				rs.close();
+				pstmt.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				Log.error("error al verificar existencia de nombre de cotizacion"+e);
+				e.printStackTrace();
+			}finally {
+				if(pstmt != null)
+				{
+					try
+					{
+						rs.close();
+						pstmt.close();
+						this.desconectarBD(con);
+					}
+					catch(SQLException e)
+					{
+						Log.error("error al verificar existencia de nombre de cotizacion"+e);
+						e.printStackTrace();
+					}
+				}
+			}		
+			this.desconectarBD(con);
+			return existeCliente;
+		}
 	
 	//public void insertarProveedor(String nombre)
 	

@@ -29,6 +29,8 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		//Fachada facade= new Fachada();
 
 		//generar reporte pdf
+		
+		//setear valores value object
 		VOReporte voReporteParametros= new VOReporte(); 
 		voReporteParametros.setNombrePresupuesto((String)execution.getVariable("COTIZACION"));
 		voReporteParametros.setCliente((String)execution.getVariable("CLIENTE"));
@@ -72,7 +74,7 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 			p.load(new FileInputStream("config/parametros.txt"));
 			String rutaArchivoAdjunto = p.getProperty("carpeta_reportes");
 
-			// Se crae el archivo pd con el nombre:
+			// Se crea el archivo pdf con el nombre:
 			// Ejemplo: Cotizacion_ESPACIO_180926-01_Fernando_Pelaez.pdf
 			String cotizacion=(String)parametros.get("cotizacion");
 			String cliente=(String)parametros.get("cliente");

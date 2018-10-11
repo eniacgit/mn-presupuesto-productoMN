@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.16.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
   <bpmn:process id="mn_proceso_productoMN" name="PROCESO: PRESUPUESTO PRODUCTO MN" isExecutable="true">
     <bpmn:startEvent id="StartEventProcessStarted" name="Process&#10;started" camunda:formKey="embedded:app:forms/start-form.html">
       <bpmn:outgoing>SequenceFlow1</bpmn:outgoing>
@@ -82,7 +82,7 @@
     </bpmn:textAnnotation>
     <bpmn:association id="Association_0can8oe" sourceRef="Task_0j32kff" targetRef="TextAnnotation_1j5xmjl" />
     <bpmn:textAnnotation id="TextAnnotation_0z7rxwn">
-      <bpmn:text>mostrar producto y seleccionar tipo de cliente e ingresar descuento o sobrecosto</bpmn:text>
+      <bpmn:text>mostrar producto extraido desde la web y pedir informacion faltante</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1f90t9j" sourceRef="Task_11h838u" targetRef="TextAnnotation_0z7rxwn" />
     <bpmn:textAnnotation id="TextAnnotation_182k2zb">
@@ -102,7 +102,7 @@
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1x1g712" sourceRef="Task_0diiwkn" targetRef="TextAnnotation_174mirp" />
     <bpmn:textAnnotation id="TextAnnotation_08xreji">
-      <bpmn:text>adjuntar presupuesto al correo</bpmn:text>
+      <bpmn:text>generar presupuesto pdf y adjuntar presupuesto al correo</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1bqjc8b" sourceRef="Task_075usr9" targetRef="TextAnnotation_08xreji" />
     <bpmn:textAnnotation id="TextAnnotation_0bllxzd">
@@ -113,6 +113,10 @@
       <bpmn:text>vista previa del presupuesto</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_12pfp13" sourceRef="Task_03ur2hj" targetRef="TextAnnotation_140nycu" />
+    <bpmn:textAnnotation id="TextAnnotation_1xj9wnw">
+      <bpmn:text>en base al descuento o sobrecosto ingresado calcula el precio de venta</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1titkra" sourceRef="Task_02iw59v" targetRef="TextAnnotation_1xj9wnw" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="mn_proceso_productoMN">
@@ -194,7 +198,7 @@
         <di:waypoint x="872" y="209" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0z7rxwn_di" bpmnElement="TextAnnotation_0z7rxwn">
-        <dc:Bounds x="950" y="209" width="100" height="112" />
+        <dc:Bounds x="950" y="209" width="100" height="98" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1f90t9j_di" bpmnElement="Association_1f90t9j">
         <di:waypoint x="1000" y="160" />
@@ -292,11 +296,11 @@
         <dc:Bounds x="1370" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_08xreji_di" bpmnElement="TextAnnotation_08xreji">
-        <dc:Bounds x="1372" y="220" width="100" height="56" />
+        <dc:Bounds x="1372" y="220" width="100" height="84" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1bqjc8b_di" bpmnElement="Association_1bqjc8b">
         <di:waypoint x="1421" y="160" />
-        <di:waypoint x="1422" y="220" />
+        <di:waypoint x="1421" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0bllxzd_di" bpmnElement="TextAnnotation_0bllxzd">
         <dc:Bounds x="1544" y="209" width="100" height="42" />
@@ -332,6 +336,13 @@
       <bpmndi:BPMNShape id="ServiceTask_1h8kf23_di" bpmnElement="Task_02iw59v">
         <dc:Bounds x="1076" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1xj9wnw_di" bpmnElement="TextAnnotation_1xj9wnw">
+        <dc:Bounds x="1076" y="223" width="100" height="98" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1titkra_di" bpmnElement="Association_1titkra">
+        <di:waypoint x="1126" y="160" />
+        <di:waypoint x="1126" y="223" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

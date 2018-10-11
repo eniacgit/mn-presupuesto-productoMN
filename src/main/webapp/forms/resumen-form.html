@@ -32,31 +32,25 @@
     	<label for="COTIZACION" class="control-label">Nombre del Presupuesto</label>
       	<input type="text" 
              cam-variable-name="COTIZACION"
-             cam-variable-type="String"
-             redonly
+             readonly
              class="form-control" />
         
          <label for="CLIENTE" class="control-label">Cliente</label>
       <input type="text" 
              cam-variable-name="CLIENTE"
-             cam-variable-type="String"             
-             required
-             redonly
+             readonly
              class="form-control" />
     
       <label for="EMAIL" class="control-label">E-mail</label>
       <input type="text" 
-             cam-variable-name="EMAIL"
-             cam-variable-type="String"             
-             required             
-             redonly
+             cam-variable-name="EMAIL"                
+             readonly
              class="form-control" />
              
       <label for="TEL" class="control-label">Tel</label>
       <input type="text" 
-             cam-variable-name="TEL"
-             cam-variable-type="String"             
-             redonly
+             cam-variable-name="TEL"                        
+             readonly
              class="form-control" />
     
     	<label for="CATEGORIA_SELECCIONADA" class="control-label">Categoria</label>
@@ -99,7 +93,19 @@
     	   cam-variable-name="DIMENSIONES"
     	   class="form-control"
      	   readonly>
-   		   	
+     	   
+     	<label for="CONDICIONES" class="control-label">Condiciones</label>   		
+   		<br>
+   	    <textarea cam-variable-name="CONDICIONES" cam-variable-type="String" rows= 7  class= "form-control" readonly></textarea>
+    	
+    	<label for="FORMA_DE_PAGO" class="control-label">Forma de Pago</label>   		
+   		<br>
+   	    <textarea cam-variable-name="FORMA_DE_PAGO" cam-variable-type="String" rows= 5  class= "form-control" readonly></textarea>
+    	
+    	<label for="TIEMPO_DE_ENTREGA" class="control-label">Tiempo de Entrega</label>   		
+   		<br>
+   	    <textarea cam-variable-name="TIEMPO_DE_ENTREGA" cam-variable-type="String" rows= 2  class= "form-control" readonly></textarea>
+    	   	    	   	
    		<br>
    			
    		<label for="tipoCliente" class="control-label">Tipo de Cliente</label>

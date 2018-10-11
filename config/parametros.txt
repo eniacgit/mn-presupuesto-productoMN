@@ -9,5 +9,5 @@ usuario=root
 password=root
 
 # CARPETA PARA ALMACENAR REPORTES PDF
-carpeta_reportes=//home//danielo//
+carpeta_reportes=//home//christian//reportes_camunda//
 

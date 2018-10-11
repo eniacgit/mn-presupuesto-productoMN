@@ -12,6 +12,8 @@ public class AutopopularDelegate implements JavaDelegate {
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		
+		Fachada facade= new Fachada();
+		
 		//obtener indice del producto seleccionado en pantalla anterior
 	    String productoIndice= (String)execution.getVariable("producto");
 	    
@@ -37,25 +39,33 @@ public class AutopopularDelegate implements JavaDelegate {
 	    productoMN= ScrappingWeb.obtenerProducto(productoTexto);
 	    
 	    //obtener nombre del presupuesto
-	    Fachada facade= new Fachada();
+	    String nombrePresupuesto= facade.generarNroCotizacionFechaActual();
 	    
-	    //setear valores iniciales
+	    //obtener texto condiciones
+	    String textoCondiciones= facade.textoCondiciones();
+	    
+	    //obtener texto forma de pago
+	    String textoFormaDePago= facade.textoFormaDePago();
+	    
+	    //obtener texto tiempo de entrega
+	    String textoTiempoDeEntrega= facade.textoTiempoDeEntrega();
+	     
+	    //setear valores para descuento y sobrecosto
 	    String descuento= "0";
 	    String sobrecosto= "0";
 	    
-	    String nombrePresupuesto= facade.generarNroCotizacionFechaActual();
-	    
 	    //obtener cotización de la moneda
-	    
 	    
 	    //autocompletar los campos restantes
 	    execution.setVariable("COTIZACION", nombrePresupuesto);
 	    execution.setVariable("PRECIO", productoMN.getPrecio());
 	    execution.setVariable("DESCRIPCION", productoMN.getDescripcion());
 	    execution.setVariable("DIMENSIONES", productoMN.getDimensiones());
+	    execution.setVariable("CONDICIONES", textoCondiciones);
+	    execution.setVariable("FORMA_DE_PAGO", textoFormaDePago);
+	    execution.setVariable("TIEMPO_DE_ENTREGA",textoTiempoDeEntrega);
 	    execution.setVariable("DESCUENTO", descuento);
 	    execution.setVariable("SOBRECOSTO", sobrecosto);
-	    //execution.setVariable("COTIZACION", nombrePresupuesto);
 	    
 	}
 

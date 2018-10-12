@@ -6,6 +6,8 @@ public class VOReporte {
 	String cliente;
 	String email;
 	String tel;
+	String urlImagen;
+	String nombreProducto;
 	String moneda;
 	String precio;
 	String descripcion;
@@ -15,20 +17,25 @@ public class VOReporte {
 	String tiempoDeEntrega;
 	String descuento;
 	String sobreCosto;
-	String precioFinal;
+	String precioFinal;	
+	String materiales;
+	String terminacion;
 	
 	public VOReporte() {
 		super();
 	}
-	
-	public VOReporte(String nombrePresupuesto, String cliente, String email, String tel, String moneda, String precio,
-			String descripcion, String dimensiones, String condiciones, String formaDePago, String tiempoDeEntrega,
-			String descuento, String sobreCosto, String precioFinal) {
+		
+	public VOReporte(String nombrePresupuesto, String cliente, String email, String tel, String urlImagen,
+			String nombreProducto, String moneda, String precio, String descripcion, String dimensiones,
+			String condiciones, String formaDePago, String tiempoDeEntrega, String descuento, String sobreCosto,
+			String precioFinal, String materiales, String terminacion) {
 		super();
 		this.nombrePresupuesto = nombrePresupuesto;
 		this.cliente = cliente;
 		this.email = email;
 		this.tel = tel;
+		this.urlImagen = urlImagen;
+		this.nombreProducto = nombreProducto;
 		this.moneda = moneda;
 		this.precio = precio;
 		this.descripcion = descripcion;
@@ -39,8 +46,12 @@ public class VOReporte {
 		this.descuento = descuento;
 		this.sobreCosto = sobreCosto;
 		this.precioFinal = precioFinal;
+		this.materiales = materiales;
+		this.terminacion = terminacion;
 	}
-	
+
+
+
 	public String getNombrePresupuesto() {
 		return nombrePresupuesto;
 	}
@@ -125,5 +136,39 @@ public class VOReporte {
 	public void setPrecioFinal(String precioFinal) {
 		this.precioFinal = precioFinal;
 	}
+
+	public String getUrlImagen() {
+		return urlImagen;
+	}
+
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+
+	public String getNombreProducto() {
+		return nombreProducto;
+	}
+
+	public void setNombreProducto(String nombreProducto) {
+		this.nombreProducto = nombreProducto;
+	}
+
+	public String getMateriales() {
+		return materiales;
+	}
+
+	public void setMateriales(String materiales) {
+		this.materiales = materiales;
+	}
+
+	public String getTerminacion() {
+		return terminacion;
+	}
+
+	public void setTerminacion(String terminacion) {
+		this.terminacion = terminacion;
+	}
+	
+	
 	
 }

@@ -198,16 +198,22 @@ public class Fachada{
 	{
 		HashMap parametros = new HashMap<String, Object>();
 		parametros.put("cotizacion", voReporteParametros.getNombrePresupuesto());
-		//fecha?
+		//fecha, no es necesario, se genera en el jasper
 		parametros.put("cliente", voReporteParametros.getCliente());
 		parametros.put("email", voReporteParametros.getEmail());
 		parametros.put("tel", voReporteParametros.getTel());
-		parametros.put("descripcion", voReporteParametros.getDescripcion());
-		parametros.put("moneda", voReporteParametros.getMoneda());
-		parametros.put("costo", voReporteParametros.getPrecio());
+		// agregar imagen (completar)
+		parametros.put("nombre",voReporteParametros.getNombreProducto());
+		parametros.put("dimensiones",voReporteParametros.getDimensiones());
+		parametros.put("materiales",voReporteParametros.getMateriales());
+		parametros.put("terminacion",voReporteParametros.getTerminacion());
+		parametros.put("precio",voReporteParametros.getPrecio());
+		
+		//parametros.put("moneda", voReporteParametros.getMoneda());
+		
 		parametros.put("condiciones", voReporteParametros.getCondiciones());
-		parametros.put("forma_de_pago", voReporteParametros.getFormaDePago());
-		parametros.put("tiempo_de_entrega", voReporteParametros.getTiempoDeEntrega());
+		parametros.put("formaPago", voReporteParametros.getFormaDePago());
+		//parametros.put("tiempo_de_entrega", voReporteParametros.getTiempoDeEntrega());
 		
 		FileInputStream fis;
 		try {

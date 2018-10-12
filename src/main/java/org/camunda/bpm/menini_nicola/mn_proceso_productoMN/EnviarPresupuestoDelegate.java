@@ -14,6 +14,7 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.logica.Fachada;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOArchivoAdjunto;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOEmail;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOProductoMN;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOReporte;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -42,6 +43,7 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		voReporteParametros.setTel((String)execution.getVariable("TEL"));
 		voReporteParametros.setMoneda((String)execution.getVariable("moneda"));
 		voReporteParametros.setPrecio((String)execution.getVariable("PRECIO"));
+		voReporteParametros.setNombreProducto((String)execution.getVariable("PRODUCTO_SELECCIONADO"));
 		voReporteParametros.setDescripcion((String)execution.getVariable("DESCRIPCION"));
 		voReporteParametros.setDimensiones((String)execution.getVariable("DIMENSIONES"));
 		voReporteParametros.setCondiciones((String)execution.getVariable("CONDICIONES"));
@@ -50,7 +52,20 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		voReporteParametros.setDescuento((String)execution.getVariable("DESCUENTO"));
 		voReporteParametros.setSobreCosto((String)execution.getVariable("SOBRECOSTO"));
 		voReporteParametros.setPrecioFinal((String)execution.getVariable("PRECIO_FINAL"));
+		
+		// obtengo materiales y terminacion
+		VOProductoMN productoMN= new VOProductoMN();
+		productoMN= ScrappingWeb.obtenerProducto((String)execution.getVariable("PRODUCTO_SELECCIONADO"));
+	
+		String materiales = productoMN.getMateriales();
+				
+		voReporteParametros.setMateriales(materiales);
+		voReporteParametros.setTerminacion("");
 
+		// url de la imagen del producto
+		String urlImagen = productoMN.getUrlImagen();
+		voReporteParametros.setUrlImagen(urlImagen);
+		
 		fachada.generarReporte(voReporteParametros);
 		
 		//enviar presupuesto por email

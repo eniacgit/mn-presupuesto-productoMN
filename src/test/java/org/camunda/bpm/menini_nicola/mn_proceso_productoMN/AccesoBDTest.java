@@ -2,13 +2,13 @@ package org.camunda.bpm.menini_nicola.mn_proceso_productoMN;
 
 import java.sql.SQLException;
 
-import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.persistencia.AccesoBD;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.persistencia.AccesoBD_conException;
 
 public class AccesoBDTest {
 
 	public static void main(String[] args) {
 	
-		AccesoBD accesoBD= new AccesoBD();
+		AccesoBD_conException accesoBD= new AccesoBD_conException();
 		
 		String intro="--TESTING DE CLASE AccesoBD--";
 		System.out.println(intro);

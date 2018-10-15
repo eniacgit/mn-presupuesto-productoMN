@@ -16,6 +16,7 @@
 	<parameter name="dimensiones" class="java.lang.String"/>
 	<parameter name="materiales" class="java.lang.String"/>
 	<parameter name="terminacion" class="java.lang.String"/>
+	<parameter name="urlimgProd" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -126,7 +127,7 @@
 			</staticText>
 			<image vAlign="Bottom">
 				<reportElement x="10" y="44" width="140" height="120" uuid="303860a3-787c-44f5-8729-312aeba6ff44"/>
-				<imageExpression><![CDATA["http://menini-nicola.com/wp-content/uploads/2015/09/mesa_OBRA_PERSPECTIVA_02-180x180.jpg"]]></imageExpression>
+				<imageExpression><![CDATA[new java.net.URL($P{urlimgProd})]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="397" y="50" width="144" height="30" uuid="05ae5050-38bb-431c-ba53-c5fc5fb8f524"/>

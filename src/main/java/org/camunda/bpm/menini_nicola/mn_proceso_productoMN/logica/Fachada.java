@@ -213,6 +213,14 @@ public class Fachada{
 		
 		parametros.put("condiciones", voReporteParametros.getCondiciones());
 		parametros.put("formaPago", voReporteParametros.getFormaDePago());
+		
+		
+		
+		// En el codigo de bpmn hay que setear lo siguiente:
+		// <imageExpression><![CDATA[new java.net.URL($P{url})]]></imageExpression>
+		// más info: https://coderanch.com/t/642610/java/Loading-byte-data-image-url
+		parametros.put("urlimgProd", voReporteParametros.getUrlImagen());
+		
 		//parametros.put("tiempo_de_entrega", voReporteParametros.getTiempoDeEntrega());
 		
 		FileInputStream fis;
@@ -230,7 +238,9 @@ public class Fachada{
 			// Se crea el archivo pdf con el nombre:
 			// Ejemplo: Cotizacion_ESPACIO_180926-01_Fernando_Pelaez.pdf
 			String cotizacion=(String)parametros.get("cotizacion");
-			String cliente=(String)parametros.get("cliente");
+			String cliente=(String)parametros.get("cliente");	
+			
+			
 			String nombreArchivoAdjunto="Cotizacion_PRODUCTO_" + cotizacion + "_" + cliente.replace(' ' , '_') +".pdf" ;
 
 			JasperExportManager.exportReportToPdfFile(jasperPrint,rutaArchivoAdjunto + nombreArchivoAdjunto);

@@ -88,13 +88,11 @@ public class ScrappingWeb {
 		
 		return lista;
 	}
-	
-	public static VOProductoMN obtenerProducto(String nombre) {
-		VOProductoMN producto = new VOProductoMN();
-		
+			
+	public static String corregirNombreProducto(String nombre) {
 		nombre = nombre.toLowerCase();
 		String strNombre="";
-		
+		// correcion de acentos
 		for (int i=0; i< nombre.length(); i++) {
 			char car = nombre.charAt(i);
 			switch(car) {
@@ -123,6 +121,50 @@ public class ScrappingWeb {
 			strNombre= strNombre + car;
 		}
 		
+		// Correccion de nombres de productos
+		if (strNombre.equals("sillon-orson-1-cuerpo"))
+			strNombre="sillon-1cuerpo-orson";
+		if (strNombre.equals("sofa-be-3-cuerpos"))
+			strNombre="sillon-be";
+		if (strNombre.equals("sofa-domino-3-cuerpos"))
+			strNombre="sillon-3cuerpos-domino";
+		if (strNombre.equals("sofa-mucca-3-cuerpos"))
+			strNombre="sofa-mucca";
+		if (strNombre.equals("sofa-orson-2-cuerpos"))
+			strNombre="sillon-2cuerpos-orson";
+		if (strNombre.equals("sofa-ross-3-cuerpos"))
+			strNombre="sofa-ross";
+		if (strNombre.equals("sofa-san-jose-3-cuerpos"))
+			strNombre="sofa-sanjose-4-cuerpos";
+		if (strNombre.equals("sofa-sorvete-4-cuerpos"))
+			strNombre="sofa-sorvete";
+		if (strNombre.equals("portadocumentos-simple-lana-y-cuero"))
+			strNombre="portadocumentos-simple-simple-lana-y-cuero";
+		if (strNombre.equals("mesa-de-centro-domino"))
+			strNombre="mesa-centro-domino";
+		if (strNombre.equals("mesa-comedor-guga"))
+			strNombre="mesa-guga";
+		if (strNombre.equals("reloj-de-mesa-haro-–-laqueado"))
+			strNombre="reloj-de-mesa-haro-laqueado";
+		if (strNombre.equals("reloj-de-mesa-haro-–-roble"))
+			strNombre="haro-mesa-roble";
+		if (strNombre.equals("reloj-de-pared-haro-–-laqueado"))
+			strNombre="reloj-de-pared-haro-laqueado";
+		if (strNombre.equals("reloj-de-pared-haro-–-roble"))
+			strNombre="reloj-de-pared-haro-roble";
+		if (strNombre.equals("mesa-de-centro-montevi-(circular-–-chica)"))
+			strNombre="mesa-de-centro-montevi-circular-chica";
+		
+		
+		return strNombre;
+	}
+	
+	
+	public static VOProductoMN obtenerProducto(String nombre) {
+		VOProductoMN producto = new VOProductoMN();			
+		
+		String strNombre=corregirNombreProducto(nombre);
+					
 		System.out.println("strNombre: "+ strNombre);		
 		String urlProducto = "http://menini-nicola.com/product/" + strNombre + "/";
 		
@@ -135,6 +177,7 @@ public class ScrappingWeb {
 			for (Element _nombre:nombres) {
 				producto.setNombre(""+_nombre.text().toUpperCase());
 			}
+			
 			
 			// obtengo el precio del producto
 			Elements precios = doc.select("p.price");			
@@ -175,7 +218,7 @@ public class ScrappingWeb {
 			}
 			producto.setMateriales(_materiales.trim());
 			
-			// obtengo dimensiones del producto
+			// obtengo dimensines del producto
 			Elements dimensiones = doc.select("td.product_dimensions");			
 			for (Element dimension: dimensiones) {
 				//System.out.println("dimensiones: " + dimension.text());
@@ -193,4 +236,5 @@ public class ScrappingWeb {
 		}		
 		return producto;
 	}
+
 }

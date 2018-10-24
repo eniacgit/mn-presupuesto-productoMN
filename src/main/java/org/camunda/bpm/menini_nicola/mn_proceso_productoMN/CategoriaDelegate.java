@@ -34,6 +34,9 @@ public class CategoriaDelegate implements JavaDelegate{
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		
+		//mostrar cliente
+		execution.setVariable("CLIENTE", execution.getVariable("CLIENTE"));
+		
 	    //este código obtiene las categorías del sitio web de Menini-Nicola 
 		//y luego las despliega por pantalla en un control 'select' de html
 		

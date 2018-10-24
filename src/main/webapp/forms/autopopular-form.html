@@ -1,10 +1,10 @@
 <strong>Proceso ProductoMN</strong>
 
 <p>
-  Autopopular Formulario
+  Auto-popular Formulario
 </p>
   
-<form role="form" class="form-horizontal">
+<form role="form" name="form" class="form-horizontal" >
 
   <script cam-script type="text/form-script">
 	
@@ -13,29 +13,50 @@
   <div class="control-group">
     <div class="controls">
     	
-    	<label for="COTIZACION" class="control-label">Nombre del Presupuesto</label>
-      	<input type="text" 
+      <label for="COTIZACION" class="control-label">Fecha-Numero</label>
+      <input type="text" 
              cam-variable-name="COTIZACION"
              cam-variable-type="String"
              class="form-control" />
-        
-         <label for="CLIENTE" class="control-label">Cliente</label>
-      <input type="text" 
+             
+      <label for="CLIENTE" class="control-label">Cliente</label>
+      <input type="text"
+      		 class= "form-control"
+      		 name="CLIENTE" 
              cam-variable-name="CLIENTE"
              cam-variable-type="String"
              maxlength=100
              required
+             ng-model="CLIENTE"
+             readonly
              class="form-control" />
-    
-      <label for="EMAIL" class="control-label">E-mail</label>
+             
+         <!--validar ingreso de cliente-->
+      <p>
+      	<span style="color:red" ng-show="form.CLIENTE.$dirty && form.CLIENTE.$invalid">
+  		<span ng-show="form.CLIENTE.$error.required">cliente es obligatorio</span>
+  		</span>
+      </p>
+      
+      
+      <label for="EMAIL" class="control-label">E-mail *</label>
       <input type="text" 
+      		 class="form-control"
+      		 name="EMAIL"
              cam-variable-name="EMAIL"
              cam-variable-type="String"
              maxlength=50
              required
              ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/"
              ng-model="EMAIL"
-             class="form-control" />
+             class="form-control" />  
+             
+      <!--validar ingreso de email-->
+      <p>
+      	<span style="color:red" ng-show="form.EMAIL.$dirty && form.EMAIL.$invalid">
+  		<span ng-show="form.EMAIL.$error.required">email es obligatorio</span>
+  		</span>
+      </p>
              
       <label for="TEL" class="control-label">Tel</label>
       <input type="text" 
@@ -44,14 +65,24 @@
              ng-pattern="/^\d{8}$/"
              ng-model="TEL"
              class="form-control" />
-             
-	  <label for="CELULAR" class="control-label">Celular</label>
+       
+      <label for="CELULAR" class="control-label">Celular *</label>
       <input type="text" 
+      		 class= "form-control"
+      		 name="CELULAR" 
              cam-variable-name="CELULAR"
              cam-variable-type="String"
              ng-pattern="/^0[\d]{8}$/"
              ng-model="CELULAR" 
-             class="form-control" />             
+             required
+             class="form-control" />
+             
+       <!--validar ingreso de celular-->
+       <p>
+       	 	<span style="color:red" ng-show="form.CELULAR.$dirty && form.CELULAR.$invalid">
+  			<span ng-show="form.CELULAR.$error.required">email es obligatorio</span>
+  			</span>
+       </p>             
     
     	<label for="CATEGORIA_SELECCIONADA" class="control-label">Categoria</label>
     	<input type="text" 
@@ -135,4 +166,8 @@
    		   		   	    
   	</div>
  </div>
+ 
+  <script src="angular.min.js" type="text/javascript"></script>
+  <script src="camunda-bpm-sdk-angular.js" type="text/javascript"></script>
+ 
 </form>

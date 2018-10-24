@@ -18,7 +18,19 @@
 
   <div class="control-group">
     <div class="controls">
-    
+    	
+      <label for="CLIENTE" class="control-label">Cliente</label>
+      <input type="text"
+      		 class= "form-control"
+      		 name="CLIENTE" 
+             cam-variable-name="CLIENTE"
+             cam-variable-type="String"
+             maxlength=100
+             required
+             ng-model="CLIENTE"
+             readonly
+             class="form-control" />
+      	
       <label for="categoria" class="control-label">Categoria</label>
       <select 
       		 cam-variable-name="categoria"

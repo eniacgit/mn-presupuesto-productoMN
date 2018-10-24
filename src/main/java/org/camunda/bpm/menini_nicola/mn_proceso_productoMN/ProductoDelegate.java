@@ -36,6 +36,9 @@ public class ProductoDelegate implements JavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 		// TODO Auto-generated method stub
 	    
+		//mostrar cliente
+		execution.setVariable("CLIENTE", execution.getVariable("CLIENTE"));
+		
 	    //obtener indice de la categoria seleccionada
 	    String categoriaIndice= (String)execution.getVariable("categoria");
 	    	    

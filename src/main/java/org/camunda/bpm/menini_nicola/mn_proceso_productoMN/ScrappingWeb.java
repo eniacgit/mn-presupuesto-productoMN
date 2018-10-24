@@ -36,7 +36,14 @@ public class ScrappingWeb {
 	public static ArrayList obtenerProductosCategoria(String categoria) {
 		ArrayList lista = new ArrayList<String>();
 		
-		// 
+		// Corrijo categorías que tengan nombre distinto al directorio correspondiente
+		if (categoria.equals("Dormitorio")) {
+			categoria = "cama";
+		}
+		if (categoria.equals("Escritorios")) {
+			categoria = "mesas-y-escritorios";
+		}
+				
 		categoria = categoria.toLowerCase();
 		String strCat="";
 		for (int i=0; i< categoria.length(); i++) {

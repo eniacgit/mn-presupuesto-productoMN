@@ -310,4 +310,30 @@ public class Fachada{
 		transport.sendMessage(message, message.getAllRecipients());
 		transport.close();		
 	}
+	
+	public void insertarCategoriaProducto(String categoria) throws  SQLException, IOException {
+		AccesoBD accesoBD = new AccesoBD();
+		accesoBD.insertarCategoriaProducto(categoria);
+	}
+	
+	public boolean existeCategoria(String categoria) {
+		AccesoBD accesoBD = new AccesoBD();
+		return accesoBD.existeCategoria(categoria);
+	}
+	
+	public int obtenerUltimoIndiceInsertadoCategoria() {
+		AccesoBD accesoBD = new AccesoBD();
+		return accesoBD.obtenerUltimoIndiceInsertadoCategoria();
+	}
+	
+	public void insertarProducto(String nombre, String descripcion, double costo, double descuento, double sobreCosto, int idCategoria, int idClientePresupuesto) throws  SQLException, IOException {
+		AccesoBD accesoBD = new AccesoBD();
+		accesoBD.insertarProducto(nombre, descripcion, costo, descuento, sobreCosto, idCategoria, idClientePresupuesto);
+	}
+	
+	public int obtenerIdCategoria(String categoria) {
+		AccesoBD accesoBD = new AccesoBD();
+		return accesoBD.obtenerIdCategoria(categoria);
+	}
+	
 }

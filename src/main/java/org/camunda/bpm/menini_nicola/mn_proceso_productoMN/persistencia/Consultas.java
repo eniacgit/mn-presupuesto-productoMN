@@ -76,8 +76,7 @@ public class Consultas {
 	
 	public String insertarProducto() {
 		String consulta="\n" + 
-				"INSERT INTO mn_producto(nombre,descripcion,costo,descuento,sobreCosto,\n" + 
-				"idCategoria,idClientePresupuesto,idProveedor) VALUES (?,?,?,?,?,?,?,?);";
+				"INSERT INTO mn_producto (nombre,descripcion,costo,descuento,sobreCosto,idCategoria,idPresupuesto) VALUES (?,?,?,?,?,?,?);";
 		return consulta;
 	}
 	
@@ -102,4 +101,17 @@ public class Consultas {
 		String consulta ="select cotizacion from mn_presupuesto where cotizacion=?";
 		return consulta;
 	}
+	
+	public String existeCategoria() {
+		String consulta = "SELECT nombre FROM mn_categoria WHERE nombre = ?;";
+		return consulta;
+	}
+	
+	public String obtenerUltimoIndiceInsertadoCategoria() {
+		String consulta ="SELECT MAX(idCategoria) AS id FROM mn_categoria;";
+		return consulta;
+	}	
+	
+	
+	
 }

@@ -2,6 +2,7 @@ package org.camunda.bpm.menini_nicola.mn_proceso_productoMN;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -12,13 +13,15 @@ import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOPresup
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOReporte;
 
 public class PersistirPresupuestoDelegate implements JavaDelegate {
+	
+	private final static Logger LOG = Logger.getLogger(PersistirPresupuestoDelegate.class.getName());
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 
 		Fachada fachada = new Fachada();
 		
-		//trarer valores del formulario
+		//traer valores del formulario
 		
 		String cotizacion= (String) execution.getVariable("COTIZACION");
 		String cliente= (String) execution.getVariable("CLIENTE");
@@ -54,7 +57,7 @@ public class PersistirPresupuestoDelegate implements JavaDelegate {
 			 moneda="USD";
 		 else
 			 moneda="$U";		 
-		 //estado: 1-aprobado, 2-no aprobado
+		 //estado: 1-aprobado, 0-no aprobado
 		 byte estado= 1;
 		 //formatear fecha
 		 DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
@@ -83,7 +86,27 @@ public class PersistirPresupuestoDelegate implements JavaDelegate {
 		 
 		 fachada.insertarClientePresupuesto(voClientePresupuesto);
 		 
-		 //persistir datos del producto
+
+		 // persitir categoria
+		 String categoria = (String)execution.getVariable("CATEGORIA_PRODUCTO");
+		 // LOG.info("\n## CATEGORIA: " + categoria);
+		 if (!fachada.existeCategoria(categoria)) {
+			 fachada.insertarCategoriaProducto(categoria);
+		 }		 
+	 
+		 //persistir datos del producto		 
+		 String nombreProducto= (String) execution.getVariable("PRODUCTO_SELECCIONADO");
+		 int idCategoria = fachada.obtenerIdCategoria(categoria);
+		 
+		 fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), idCategoria, idPresupuesto);
+		 
+		 
+		 
+		 
+		 
+		 
+		// LOG.info("\n## NOMBRE DEL PRODUCTO: " + nombreProducto);
+		 
 		 
 		 
 		 

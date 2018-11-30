@@ -17,6 +17,9 @@
 	<parameter name="materiales" class="java.lang.String"/>
 	<parameter name="terminacion" class="java.lang.String"/>
 	<parameter name="urlimgProd" class="java.lang.String"/>
+	<parameter name="descuento" class="java.lang.String"/>
+	<parameter name="sobrecosto" class="java.lang.String"/>
+	<parameter name="precioFinal" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -118,19 +121,15 @@
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
-			<staticText>
-				<reportElement x="390" y="20" width="158" height="19" uuid="34e1710b-ea97-429b-8e00-2d0b15f5b749"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Total UNITARIO $U]]></text>
-			</staticText>
 			<image vAlign="Bottom">
 				<reportElement x="10" y="44" width="140" height="120" uuid="303860a3-787c-44f5-8729-312aeba6ff44"/>
 				<imageExpression><![CDATA[new java.net.URL($P{urlimgProd})]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="397" y="50" width="144" height="30" uuid="05ae5050-38bb-431c-ba53-c5fc5fb8f524"/>
+				<reportElement x="400" y="50" width="144" height="14" uuid="05ae5050-38bb-431c-ba53-c5fc5fb8f524"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{precio}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -148,6 +147,30 @@
 			<textField>
 				<reportElement x="170" y="140" width="210" height="30" uuid="6da7693d-7a42-4c6e-a962-8814c993824d"/>
 				<textFieldExpression><![CDATA[$P{terminacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="72" width="144" height="18" uuid="193929ca-9b49-41d9-b61b-5c32d3e2aca2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{descuento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="145" width="220" height="20" uuid="0e7b8887-34d5-44b5-bfa0-bb62f0539f89"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{precioFinal}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="399" y="134" width="145" height="1" uuid="aeec9cf8-d564-4b0d-b2a9-11e1f12edaf0"/>
+			</line>
+			<textField>
+				<reportElement x="400" y="100" width="144" height="18" uuid="6f9d07ec-6663-4f19-9b0b-b2787b7714e8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sobrecosto}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="110">

@@ -88,8 +88,8 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		VOEmail voEmail = new VOEmail();
 		voEmail.setDestinatario(voReporteParametros.getEmail());
 		voEmail.setAsunto("Correo de prueba enviado desde proceso en camunda mediante Java");
-		voEmail.setCuerpo(
-				"Esta es una prueba de correo, y si lo estas viendo que es que quedó resuelto como mandar mails desde camunda...");
+		voEmail.setCuerpo("Estimado " + voReporteParametros.getCliente() +
+				":\n\n Esta es una prueba de correo, y si lo estas viendo que es que quedó resuelto como mandar mails desde camunda...");
 		voEmail.setLstArchivosAdjuntos(lstArchivosAdjuntos);
 
 		Fachada f = new Fachada();

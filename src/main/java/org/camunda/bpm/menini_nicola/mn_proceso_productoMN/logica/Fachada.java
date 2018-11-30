@@ -207,9 +207,18 @@ public class Fachada{
 		parametros.put("dimensiones",voReporteParametros.getDimensiones());
 		parametros.put("materiales",voReporteParametros.getMateriales());
 		parametros.put("terminacion",voReporteParametros.getTerminacion());
-		parametros.put("precio",voReporteParametros.getPrecio());
 		
-		//parametros.put("moneda", voReporteParametros.getMoneda());
+		String moneda ="";
+		if (voReporteParametros.getMoneda().equals("dolares"))
+			moneda = "USD";
+		else
+			moneda = "$U";
+		
+		parametros.put("precio","Precio unitario ("+ moneda +"): "  + voReporteParametros.getPrecio());
+		parametros.put("descuento", "Descuento (%): " + voReporteParametros.getDescuento());
+		parametros.put("sobrecosto", "Sobre costo (%): " + voReporteParametros.getSobreCosto());
+		parametros.put("precioFinal", "Precio final (" + moneda + "): " + voReporteParametros.getPrecioFinal());
+		
 		
 		parametros.put("condiciones", voReporteParametros.getCondiciones());
 		parametros.put("formaPago", voReporteParametros.getFormaDePago());

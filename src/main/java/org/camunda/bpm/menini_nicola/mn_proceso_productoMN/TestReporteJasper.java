@@ -1,72 +1,44 @@
 package org.camunda.bpm.menini_nicola.mn_proceso_productoMN;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Properties;
-
-import net.sf.jasperreports.engine.JREmptyDataSource;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.logica.Fachada;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOReporte;
 
 public class TestReporteJasper {
 
-	public static void main(String[] args) throws IOException {
-		// Creación de presupuesto espacio
-		HashMap parametros = new HashMap<String, Object>();
-		parametros.put("cotizacion", "180920-01");
-		parametros.put("cliente", "Maria Valenzuela");
-		parametros.put("email", "mariavelenzuela@gmail.com");
-		parametros.put("descripcion", "bla bla bla");
-		parametros.put("moneda", "US$");
-		float costo = 150;
-		parametros.put("costo", costo);
-		parametros.put("condiciones", "30 dias");
-		
-		FileInputStream fis;
-		
-		try {
-			fis = new FileInputStream("reportes//jasper//presupuestoProductoMN.jasper");
-			BufferedInputStream bufferedInputStream = new BufferedInputStream(fis);
+	public static void main(String[] args) {			
 			
-			//Load bufferedInputStream file.jasper 
-			JasperReport jasperReport = (JasperReport) JRLoader.loadObject(bufferedInputStream); 
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parametros,new JREmptyDataSource());
-			
-			Properties p = new Properties();
-			p.load(new FileInputStream("config/parametros.txt"));
-			String rutaArchivoAdjunto = p.getProperty("carpeta_reportes");
-					
-			// Se crae el archivo pd con el nombre:
-			// Ejemplo: Cotizacion_ESPACIO_180926-01_Fernando_Pelaez.pdf
-			String cotizacion="180926-01";
-			String cliente="Fernando Pelaez";
-			String nombreArchivoAdjunto="Cotizacion_ESPACIO_" + cotizacion + "_" + cliente.replace(' ' , '_') +".pdf" ;
+		VOReporte voReporte = new VOReporte();
+		voReporte.setNombrePresupuesto("20181129-01");
+		voReporte.setCliente("SKYnet");
+		voReporte.setEmail("deleon.danielo@gmail.com");
+		voReporte.setTel("26190000");
+		voReporte.setUrlImagen("http://menini-nicola.com/wp-content/uploads/2015/08/Silla_JESSIE_72ppp-600x600.jpg");
+		voReporte.setNombreProducto("SILLA JESSIE");
+		voReporte.setMoneda("USD");
+		voReporte.setPrecio("570");
+		voReporte.setDescripcion("iviana y sin un ambiente definido, la silla JESSIE es una propuesta del estudio reaccionando frente a la actual escasez de oferta en sillas en madera del mercado. Su estilo relacionado con el diseño escandinavo llevó a ser seleccionada para formar parte del mobiliario del Café Allegro en el Teatro Solís!");
+		voReporte.setDimensiones("41 x 52 x 84 cm");
+		voReporte.setCondiciones("Precio en dólares americanos. Incluye impuestos y transporte dentro de Montevideo. Pago sin recargo con VISA, MasterCard y AmericanExpress. Tiempo de entrega 35 días (a confirmar al momento de la compra).\n" + 
+				"El diseño es exclusivo de menini-nicola");
+		voReporte.setFormaDePago("Precio en dólares americanos. Incluye impuestos y transporte dentro de Montevideo. Pago sin recargo con VISA, MasterCard y AmericanExpress. Tiempo de entrega 40 días (a confirmar al momento de la compra).\n" + 
+				"El diseño es exclusivo de menini-nicola.");
+		voReporte.setTiempoDeEntrega("30");
+		voReporte.setDescuento("10");
+		voReporte.setSobreCosto("0");
+		voReporte.setPrecioFinal("565");
+		voReporte.setMateriales("Materiales: Madera de Peteribí.");
+		voReporte.setTerminacion("Terminación: Lustre PU.");
+		
+		
+		
+		
+		
+		
+		Fachada f = new Fachada();
+		f.generarReporte(voReporte);
+		
+		System.out.println("REPORTE GENERADO CON EXITO en /home/Danielo/reportes");
 
-			//String rutaArchivoAdjunto = "//home//danielo//";
-			//JasperExportManager.exportReportToPdfFile(jasperPrint,"//home//danielo//presupuestoEspacio.pdf");
-			//JasperExportManager.exportReportToPdfFile(jasperPrint,rutaArchivoAdjunto + nombreArchivoAdjunto);
-			JasperExportManager.exportReportToPdfFile(jasperPrint,rutaArchivoAdjunto + nombreArchivoAdjunto);
-			//JasperViewer.viewReport(jasperPrint, false);
-			
-			//String destinatario = destinatarioIn;
-			//String asunto ="Correo de prueba enviado desde proceso en camunda mediante Java";
-			//String cuerpo = "Esta es una prueba de correo, y si lo estas viendo que es que quedó resuelto como mandar mails desde camunda...";
-			//enviarConGmail(destinatario, asunto, cuerpo,rutaArchivoAdjunto,nombreArchivoAdjunto);
-			
-			
-			
-		} catch (FileNotFoundException | JRException e) {
-			e.printStackTrace();
-		}
 	}
 
 }

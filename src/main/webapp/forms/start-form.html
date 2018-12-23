@@ -6,6 +6,21 @@
 
 <form role="form" name="form" class="form-horizontal" >
 
+  <script cam-script type="text/form-script">
+  
+	var cliente = $scope.cliente = {};
+	$scope.tipoClientes=["CORPORATIVO","CONSUMIDOR FINAL"]
+    
+	camForm.on('form-loaded', function() {
+    // declaro una variable 'json' nombrada 'cliente' 
+    camForm.variableManager.createVariable({
+        name: 'cliente',
+        type: 'json',
+        value: cliente
+      });
+    });
+  </script>
+
   <div class="control-group">
     <div class="controls">
       
@@ -19,7 +34,7 @@
              required
              ng-model="CLIENTE"
              class="form-control" />
-      		
+             
       		<!--validar ingreso de cliente-->
       		<p>
       			<span style="color:red" ng-show="form.CLIENTE.$dirty && form.CLIENTE.$invalid">
@@ -27,6 +42,14 @@
   				</span>
       		</p>
       
+      <label for="TIPO_CLIENTE" class="control-label">Tipo de Cliente *</label>
+      <br>
+      <select ng-model="cliente.tipoCliente" 
+              ng-options="x for x in tipoClientes"
+              required>
+              <option value="">--ingresar tipo de cliente--</option>
+	  </select>
+      <br>
       <label for="EMAIL" class="control-label">E-mail *</label>
       <input type="text" 
       		 class="form-control"
@@ -47,28 +70,27 @@
       		</p>
              
       <label for="TEL" class="control-label">Tel</label>
-      <input type="text" 
+      <input class="form-control"
+      		 type="number" 
              cam-variable-name="TEL"
              cam-variable-type="String"
-             ng-pattern="/^\d{8}$/"
              ng-model="tel"
-             class="form-control" />
+             name="TEL" />
              
       <label for="CELULAR" class="control-label">Celular *</label>
-      <input type="text" 
-      		 class= "form-control"
-      		 name="CELULAR" 
+      <input class= "form-control"
+      		 type="text" 
              cam-variable-name="CELULAR"
              cam-variable-type="String"
              ng-pattern="/^0[\d]{8}$/"
              ng-model="CELULAR" 
              required
-             class="form-control" />
+             name="CELULAR" />
              
               <!--validar ingreso de celular-->
       		 <p>
       			<span style="color:red" ng-show="form.CELULAR.$dirty && form.CELULAR.$invalid">
-  				<span ng-show="form.CELULAR.$error.required">email es obligatorio</span>
+  				<span ng-show="form.CELULAR.$error.required">celular es obligatorio</span>
   				</span>
       		 </p>
       

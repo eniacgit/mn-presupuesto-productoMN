@@ -19,6 +19,7 @@
         value: cliente
       });
     });
+
   </script>
 
   <div class="control-group">
@@ -38,7 +39,7 @@
       		<!--validar ingreso de cliente-->
       		<p>
       			<span style="color:red" ng-show="form.CLIENTE.$dirty && form.CLIENTE.$invalid">
-  				<span ng-show="form.CLIENTE.$error.required">cliente es obligatorio</span>
+  					<span ng-show="form.CLIENTE.$error.required">cliente es obligatorio</span>
   				</span>
       		</p>
       
@@ -49,6 +50,47 @@
               required>
               <option value="">--ingresar tipo de cliente--</option>
 	  </select>
+      <br>
+      
+      <div ng-if="cliente.tipoCliente == 'CORPORATIVO' "> 
+        <label for="RUT" class="control-label">RUT *</label>
+      	<input type="text"
+      		   class= "form-control"
+      		   name="RUT" 
+               cam-variable-name="RUT"
+               cam-variable-type="String"
+               maxlength=100
+               required
+               ng-model="RUT"
+               class="form-control" />
+            
+        <!--validar ingreso de rut-->
+      	<p>
+      		<span style="color:red" ng-show="form.RUT.$dirty && form.RUT.$invalid">
+  				<span ng-show="form.RUT.$error.required">rut es obligatorio</span>
+  			</span>
+      	</p>
+      
+      	<label for="RAZON_SOCIAL" class="control-label">Razón Social *</label>
+      	<input type="text"
+      	       class= "form-control"
+      		   name="RAZON_SOCIAL" 
+               cam-variable-name="RAZON_SOCIAL"
+               cam-variable-type="String"
+               maxlength=100
+               required
+               ng-model="RAZON_SOCIAL"
+               class="form-control" />
+      
+      	<!--validar ingreso de razón social-->
+      	<p>
+      		<span style="color:red" ng-show="form.RAZON_SOCIAL.$dirty && form.RAZON_SOCIAL.$invalid">
+  				<span ng-show="form.RAZON_SOCIAL.$error.required">razón social es obligatoria</span>
+  			</span>
+      	</p>
+      	
+      </div>
+      
       <br>
       <label for="EMAIL" class="control-label">E-mail *</label>
       <input type="text" 
@@ -65,7 +107,7 @@
              <!--validar ingreso de email-->
       		<p>
       			<span style="color:red" ng-show="form.EMAIL.$dirty && form.EMAIL.$invalid">
-  				<span ng-show="form.EMAIL.$error.required">email es obligatorio</span>
+  					<span ng-show="form.EMAIL.$error.required">email es obligatorio</span>
   				</span>
       		</p>
              
@@ -90,9 +132,18 @@
               <!--validar ingreso de celular-->
       		 <p>
       			<span style="color:red" ng-show="form.CELULAR.$dirty && form.CELULAR.$invalid">
-  				<span ng-show="form.CELULAR.$error.required">celular es obligatorio</span>
+  					<span ng-show="form.CELULAR.$error.required">celular es obligatorio</span>
   				</span>
       		 </p>
+      
+      <label for="DIRECCION" class="control-label">Dirección de Entrega</label>
+      <input class= "form-control"
+      		 type="text" 
+             cam-variable-name="DIRECCION"
+             cam-variable-type="String"
+             maxlength=100
+             ng-model="DIRECCION"
+             name="DIRECCION" />
       
     </div>
   </div>

@@ -13,8 +13,12 @@
     // declaro una variable 'json' nombrada 'cliente' 
     camForm.variableManager.createVariable({
         name: 'cliente',
-        type: 'json',
-        value: cliente
+        type: 'Object',
+        value: cliente,
+		valueInfo: {
+			serializationDataFormat:'application/json',
+			objectTypeName:'org.camunda.bpm.menini_nicola.mn_proceso_productoMN.modelo.Cliente'
+		}
       });
     });
 
@@ -43,14 +47,14 @@
       
       <label for="TIPO_CLIENTE" class="control-label">Tipo de Cliente *</label>
       <br>
-      <select ng-model="cliente.tipoCliente" 
+      <select ng-model="cliente.tipo" 
               ng-options="x for x in tipoClientes"
               required>
               <option value="">--ingresar tipo de cliente--</option>
 	  </select>
       <br>
       
-      <div ng-if="cliente.tipoCliente == 'CORPORATIVO' "> 
+      <div ng-if="cliente.tipo == 'CORPORATIVO' "> 
         <label for="RUT" class="control-label">RUT *</label>
       	<input type="text"
       		   class= "form-control"
@@ -114,7 +118,7 @@
       		 type="number" 
              cam-variable-name="TEL"
              cam-variable-type="String"
-             ng-model="cliente.tel"
+             ng-model="cliente.telefono"
              name="TEL" />
              
       <label for="CELULAR" class="control-label">Celular *</label>

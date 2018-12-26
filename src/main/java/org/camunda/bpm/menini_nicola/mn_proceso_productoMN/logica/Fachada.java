@@ -55,7 +55,11 @@ public class Fachada{
 		String email = cliente.getEmail();
 		String telefono = cliente.getTelefono();
 		String celular = cliente.getCelular();
-		accesoBD.insertarCliente(nombre, email, telefono, celular);
+		String tipo= cliente.getTipo();
+		String rut = cliente.getRut();
+		String razonSocial= cliente.getRazonSocial();
+		String direccion= cliente.getDireccion();
+		accesoBD.insertarCliente(nombre, email, telefono, celular,tipo,rut,razonSocial,direccion);
 	}
 	
 	public boolean existeCliente(String nombre) {

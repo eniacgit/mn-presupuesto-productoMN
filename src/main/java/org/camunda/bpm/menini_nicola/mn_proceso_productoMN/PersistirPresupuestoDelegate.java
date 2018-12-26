@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.logica.Fachada;
+import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.modelo.Cliente;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOCliente;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOClientePresupuesto;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOPresupuesto;
@@ -23,11 +24,21 @@ public class PersistirPresupuestoDelegate implements JavaDelegate {
 		
 		//traer valores del formulario
 		
+		//traer datos del cliente		
+		Cliente cliente= new Cliente();
+		cliente = (Cliente)execution.getVariable("cliente");
+		
+//		String cliente= (String) execution.getVariable("CLIENTE");
+//		//tipo cliente
+//		String rut= (String) execution.getVariable("RUT");		
+//		String razonSocial= (String) execution.getVariable("RAZON_SOCIAL");
+//		String email= (String) execution.getVariable("EMAIL");
+//		String tel= (String)execution.getVariable("TEL");
+//		String celular= (String)execution.getVariable("CELULAR");
+//		String direccion= (String)execution.getVariable("DIRECCION");
+		
+		//traer datos del producto
 		String cotizacion= (String) execution.getVariable("COTIZACION");
-		String cliente= (String) execution.getVariable("CLIENTE");
-		String email= (String) execution.getVariable("EMAIL");
-		String tel= (String)execution.getVariable("TEL");
-		String celular= (String)execution.getVariable("CELULAR");
 		String moneda= (String) execution.getVariable("moneda");
 		String precio=(String)execution.getVariable("PRECIO");
 		String descripcion= (String) execution.getVariable("DESCRIPCION");
@@ -42,12 +53,16 @@ public class PersistirPresupuestoDelegate implements JavaDelegate {
 		//persistir datos del cliente
 		
 		VOCliente voCliente = new VOCliente();
-		voCliente.setNombre(cliente);
-		voCliente.setEmail(email);
-		voCliente.setTelefono(tel);
-		voCliente.setCelular(celular);
-	 		 
-		 if (!fachada.existeCliente(cliente)) {
+		voCliente.setNombre(cliente.getNombre());
+		voCliente.setEmail(cliente.getEmail());
+		voCliente.setTelefono(cliente.getTelefono());
+		voCliente.setCelular(cliente.getCelular());
+		voCliente.setTipo(cliente.getTipo());
+		voCliente.setRut(cliente.getRut());
+		voCliente.setRazonSocial(cliente.getRazonSocial());
+		voCliente.setDireccion(cliente.getDireccion());	 
+		
+		 if (!fachada.existeCliente(cliente.getNombre())) {
 			 fachada.insertarCliente(voCliente);
 		 }
 		 

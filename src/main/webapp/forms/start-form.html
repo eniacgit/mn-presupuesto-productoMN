@@ -1,9 +1,7 @@
-<strong>Proceso ProductoMN</strong>
-
-<p>
-  Datos del cliente
-</p>
-
+<center>
+	<strong>Presupuesto ProductoMN</strong>
+	<p>Ingresar Datos del Cliente</p>
+</center>
 <form role="form" name="form" class="form-horizontal" >
 
   <script cam-script type="text/form-script">
@@ -33,7 +31,7 @@
              cam-variable-type="String"
              maxlength=100
              required
-             ng-model="CLIENTE"
+             ng-model="cliente.nombre"
              class="form-control" />
              
       		<!--validar ingreso de cliente-->
@@ -61,7 +59,7 @@
                cam-variable-type="String"
                maxlength=100
                required
-               ng-model="RUT"
+               ng-model="cliente.rut"
                class="form-control" />
             
         <!--validar ingreso de rut-->
@@ -79,7 +77,7 @@
                cam-variable-type="String"
                maxlength=100
                required
-               ng-model="RAZON_SOCIAL"
+               ng-model="cliente.razonSocial"
                class="form-control" />
       
       	<!--validar ingreso de razón social-->
@@ -101,7 +99,7 @@
              maxlength=50
              required
              ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/"
-             ng-model="EMAIL"
+             ng-model="cliente.email"
              class="form-control" />
              
              <!--validar ingreso de email-->
@@ -116,7 +114,7 @@
       		 type="number" 
              cam-variable-name="TEL"
              cam-variable-type="String"
-             ng-model="tel"
+             ng-model="cliente.tel"
              name="TEL" />
              
       <label for="CELULAR" class="control-label">Celular *</label>
@@ -125,7 +123,7 @@
              cam-variable-name="CELULAR"
              cam-variable-type="String"
              ng-pattern="/^0[\d]{8}$/"
-             ng-model="CELULAR" 
+             ng-model="cliente.celular" 
              required
              name="CELULAR" />
              
@@ -142,7 +140,7 @@
              cam-variable-name="DIRECCION"
              cam-variable-type="String"
              maxlength=100
-             ng-model="DIRECCION"
+             ng-model="cliente.direccion"
              name="DIRECCION" />
       
     </div>

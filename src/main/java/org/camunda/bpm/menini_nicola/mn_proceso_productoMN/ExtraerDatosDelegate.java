@@ -7,7 +7,7 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.logica.*;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOProductoMN;
 
-public class AutopopularDelegate implements JavaDelegate {
+public class ExtraerDatosDelegate implements JavaDelegate {
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {

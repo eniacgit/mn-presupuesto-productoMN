@@ -1,0 +1,164 @@
+<center>
+	<strong>Presupuesto ProductoMN</strong>
+	<p>Vista Previa</p>
+</center>  
+
+<form role="form" class="form-horizontal">
+
+  <script cam-script type="text/form-script">
+  
+ 	camForm.on('form-loaded',function() {
+		camForm.variableManager.fetchVariable('moneda');
+	});
+
+	camForm.on('variables-restored',function() {
+		$scope.moneda=camForm.variableManager.variableValue('moneda');
+	});
+
+	camForm.on('form-loaded',function() {
+		camForm.variableManager.fetchVariable('tipoCliente');
+	});
+
+	camForm.on('variables-restored',function() {
+		$scope.tipoCliente=camForm.variableManager.variableValue('tipoCliente');
+	});
+
+  </script>
+  
+  <div class="control-group">
+    <div class="controls">
+    
+    	<label for="COTIZACION" class="control-label">Nombre del Presupuesto</label>
+      	<input type="text" 
+             cam-variable-name="COTIZACION"
+             cam-variable-type="String"
+             readonly
+             class="form-control" />
+        
+         <label for="CLIENTE" class="control-label">Cliente</label>
+      <input type="text" 
+             cam-variable-name="CLIENTE"
+             cam-variable-type="String"
+             readonly
+             class="form-control" />
+    
+      <label for="EMAIL" class="control-label">E-mail</label>
+      <input type="text" 
+             cam-variable-name="EMAIL"                
+             cam-variable-type="String"
+             readonly
+             class="form-control" />
+             
+      <label for="TEL" class="control-label">Tel</label>
+      <input type="text" 
+             cam-variable-name="TEL"                        
+             cam-variable-type="String"
+             readonly
+             class="form-control" />
+             
+	  <label for="CELULAR" class="control-label">Celular</label>
+      <input type="text" 
+             cam-variable-name="CELULAR"                        
+             cam-variable-type="String"
+             readonly
+             class="form-control" />		             	
+    
+    	<label for="CATEGORIA_SELECCIONADA" class="control-label">Categoria</label>
+    	<input type="text" 
+    	   cam-variable-name="CATEGORIA_PRODUCTO"
+    	   cam-variable-type="String"
+    	   class="form-control"
+     	   readonly>
+   		   		
+     	<label for="PRODUCTO_SELECCIONADO" class="control-label">Producto</label>
+   		<input type="text" 
+    	   cam-variable-name="PRODUCTO_SELECCIONADO"
+    	   cam-variable-type="String"
+    	   class="form-control"
+     	   readonly>
+     	   
+<!--      	<label class="control-label">Cotización de la Moneda</label> -->
+<!--      	<input type="text"  -->
+<!--     	   cam-variable-name="COTIZACION_MONEDA" -->
+<!--     	   class="form-control" -->
+<!--      	readonly> -->
+   		
+<!--    		<br> -->
+   		   		
+   		<label class="control-label">Moneda</label>
+      	<address>		      
+			  <span ng-if="moneda == 'dolares'">U$S</span>
+			  <span ng-if="moneda == 'pesos'">$</span>
+	  	</address>
+   		   		
+     	<label for="PRECIO" class="control-label">Precio</label>
+   		<input type="text" 
+    	   cam-variable-name="PRECIO"
+    	   cam-variable-type="String"
+    	   class="form-control"
+     	   readonly>
+   		   		
+   		<label for="DESCRIPCION" class="control-label">Descripcion</label>   		
+   	    <textarea cam-variable-name="DESCRIPCION" cam-variable-type="String" rows= 3  class= "form-control" readonly></textarea>
+   	       	    
+   	    <label for="DIMENSIONES" class="control-label">Dimensiones</label>
+   		<input type="text" 
+    	   cam-variable-name="DIMENSIONES"
+    	   cam-variable-type="String"
+    	   class="form-control"
+     	   readonly>
+     	   
+     	<label for="CONDICIONES" class="control-label">Condiciones</label>   		
+   		<br>
+   	    <textarea cam-variable-name="CONDICIONES" cam-variable-type="String" rows= 7  class= "form-control" readonly></textarea>
+    	
+    	<label for="FORMA_DE_PAGO" class="control-label">Forma de Pago</label>   		
+   		<br>
+   	    <textarea cam-variable-name="FORMA_DE_PAGO" cam-variable-type="String" rows= 5  class= "form-control" readonly></textarea>
+    	
+    	<label for="TIEMPO_DE_ENTREGA" class="control-label">Tiempo de Entrega</label>   		
+   		<br>
+   	    <textarea cam-variable-name="TIEMPO_DE_ENTREGA" cam-variable-type="String" rows= 2  class= "form-control" readonly></textarea>
+    	   	    	   	
+   		<br>
+   			
+   		<label for="tipoCliente" class="control-label">Tipo de Cliente</label>
+      	 <address>		      
+		      <span ng-if="tipoCliente == 'consumidor'">CONSUMIDOR FINAL</span>
+			  <span ng-if="tipoCliente == 'cliente'">CLIENTE</span>
+			  <span ng-if="tipoCliente == 'lead'">LEAD</span>
+			  <span ng-if="tipoCliente == 'prospect'">PROSPECT</span>
+	  	</address>
+   		   	
+   		<label for="DESCUENTO" class="control-label">Descuento %</label>
+   		<input type="text"
+       		cam-variable-name="DESCUENTO"
+       		cam-variable-type="String"
+       		class="form-control" 
+       		readonly/>
+   		   		
+   		<label for="SOBRECOSTO" class="control-label">Sobrecosto %</label>
+   		<input type="text"
+       		cam-variable-name="SOBRECOSTO"
+       		cam-variable-type="String"
+       		class="form-control" 
+       		readonly/>
+       	   		
+   		<label for="PRECIO_FINAL" class="control-label">Precio Final</label>
+   		<input type="text"
+       		cam-variable-name="PRECIO_FINAL"
+       		cam-variable-type="String"
+       		class="form-control" 
+       		readonly/>
+       		
+       	<br>
+	     <label for="descartarPresupuesto">Descartar presupuesto</label>
+	     <input type="checkbox"
+	            cam-variable-name="descartarPresupuesto"
+	            cam-variable-type="Boolean"
+	            name="descartarPresupuesto"
+	            class="form-control" />
+       	
+  	</div>
+ </div>
+</form>

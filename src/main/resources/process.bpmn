@@ -12,7 +12,7 @@
       <bpmn:incoming>SequenceFlow1</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_00wd26c</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Task_1kcnhx0" name="Seleccionar una categoria" camunda:formKey="embedded:app:forms/categoria-form.html" camunda:assignee="ddeleon" camunda:candidateUsers="javier" camunda:candidateGroups="aprobadores">
+    <bpmn:userTask id="Task_1kcnhx0" name="Seleccionar una categoria" camunda:formKey="embedded:app:forms/categoria-form.html" camunda:candidateGroups="creadores">
       <bpmn:incoming>SequenceFlow_00wd26c</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1bneeoc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0f8i622</bpmn:outgoing>
@@ -21,12 +21,12 @@
       <bpmn:incoming>SequenceFlow_0f8i622</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_17iefr1</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Task_0diiwkn" name="Seleccionar producto" camunda:formKey="embedded:app:forms/producto-form.html" camunda:assignee="ddeleon" camunda:candidateUsers="javier" camunda:candidateGroups="aprobadores">
+    <bpmn:userTask id="Task_0diiwkn" name="Seleccionar producto" camunda:formKey="embedded:app:forms/producto-form.html" camunda:candidateGroups="creadores">
       <bpmn:incoming>SequenceFlow_17iefr1</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_04lka1a</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_171w1bf</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_11h838u" name="Resumen" camunda:formKey="embedded:app:forms/resumen-form.html" camunda:assignee="ddeleon" camunda:candidateUsers="javier" camunda:candidateGroups="aprobadores">
+    <bpmn:userTask id="Task_11h838u" name="Resumen" camunda:formKey="embedded:app:forms/resumen-form.html" camunda:candidateGroups="creadores">
       <bpmn:incoming>SequenceFlow_0rvob37</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_028ih3t</bpmn:outgoing>
     </bpmn:userTask>
@@ -36,7 +36,7 @@
       <bpmn:outgoing>SequenceFlow_1p3k2r5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_1sonblz" name="aprobado" sourceRef="ExclusiveGateway_12gvq0k" targetRef="Task_0pn65ig">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{aprobar}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not rechazar}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:serviceTask id="Task_0pn65ig" name="Persistir presupuesto aprobado en BD" camunda:class="org.camunda.bpm.menini_nicola.mn_proceso_productoMN.PersistirPresupuestoDelegate">
       <bpmn:incoming>SequenceFlow_1sonblz</bpmn:incoming>
@@ -50,14 +50,14 @@
       <bpmn:incoming>SequenceFlow_1p3k2r5</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1p3k2r5" name="rechazado" sourceRef="ExclusiveGateway_12gvq0k" targetRef="EndEvent_0pqdpk0">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{not aprobar}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{rechazar}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0uu6hnx" sourceRef="Task_1xsd86n" targetRef="ExclusiveGateway_12gvq0k" />
-    <bpmn:userTask id="Task_1xsd86n" name="Marcar respuesta del cliente" camunda:formKey="embedded:app:forms/respuesta-form.html" camunda:assignee="ddeleon" camunda:candidateUsers="javier" camunda:candidateGroups="aprobadores">
+    <bpmn:userTask id="Task_1xsd86n" name="Marcar respuesta del cliente" camunda:formKey="embedded:app:forms/respuesta-form.html" camunda:candidateGroups="aprobadores">
       <bpmn:incoming>SequenceFlow_0x23dkj</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0uu6hnx</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_03ur2hj" name="Vista previa" camunda:formKey="embedded:app:forms/vistaPrevia-form.html" camunda:assignee="ddeleon" camunda:candidateUsers="javier" camunda:candidateGroups="aprobadores">
+    <bpmn:userTask id="Task_03ur2hj" name="Vista previa" camunda:formKey="embedded:app:forms/vistaPrevia-form.html" camunda:candidateGroups="aprobadores">
       <bpmn:incoming>SequenceFlow_0qbibet</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0kuuj2a</bpmn:outgoing>
     </bpmn:userTask>

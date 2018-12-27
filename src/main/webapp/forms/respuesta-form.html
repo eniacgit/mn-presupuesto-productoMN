@@ -23,13 +23,28 @@
              ng-model="CLIENTE"
              readonly
              class="form-control" />
-                   
+      
+       <br>       
+       <label for="COTIZACION" class="control-label">Nombre del Presupuesto</label>
+       <input type="text" 
+              cam-variable-name="COTIZACION"
+              cam-variable-type="String"
+              readonly
+              class="form-control" /><br>      
+      <br>        
+      <label for="PRODUCTO_SELECCIONADO" class="control-label">Producto</label>
+   	  <input type="text" 
+    	   cam-variable-name="PRODUCTO_SELECCIONADO"
+    	   cam-variable-type="String"
+    	   class="form-control"
+     	   readonly />
+     	                      
       <br>
-      <label for="aprobar">Aprobado por el cliente</label>
+      <label for="rechazar">Rechazado por el cliente</label>
       <input type="checkbox"
-             cam-variable-name="aprobar"
+             cam-variable-name="rechazar"
              cam-variable-type="Boolean"
-             name="aprobar"
+             name="rechazar"
              class="form-control" />
   	</div>
   </div>

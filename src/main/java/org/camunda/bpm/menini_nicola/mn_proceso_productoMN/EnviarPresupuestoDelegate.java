@@ -80,6 +80,9 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		arch1.setRutaArchivoAdjunto(rutaArchivoAdjunto);
 		arch1.setNombreArchivoAdjunto(nombreArchivoAdjunto);
 		
+		execution.setVariable("rutaReportePDF",rutaArchivoAdjunto);	
+		execution.setVariable("nombreReportePDF",nombreArchivoAdjunto);		
+		
 		// ArrayList de archivos adjuntos (reporte pdf, cronograma pdf)
 		ArrayList<VOArchivoAdjunto> lstArchivosAdjuntos = new ArrayList<VOArchivoAdjunto>();
 		lstArchivosAdjuntos.add(arch1);
@@ -96,45 +99,6 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		f.enviarConGmail(voEmail);
 		
 		
-//		HashMap parametros = new HashMap<String, Object>();
-//		parametros.put("cotizacion", voReporteParametros.getNombrePresupuesto());
-//		//fecha?
-//		parametros.put("cliente", voReporteParametros.getCliente());
-//		parametros.put("email", voReporteParametros.getEmail());
-//		parametros.put("tel", voReporteParametros.getTel());
-//		parametros.put("descripcion", voReporteParametros.getDescripcion());
-//		parametros.put("moneda", voReporteParametros.getMoneda());
-//		parametros.put("costo", voReporteParametros.getPrecio());
-//		parametros.put("condiciones", voReporteParametros.getCondiciones());
-//		parametros.put("forma_de_pago", voReporteParametros.getFormaDePago());
-//		parametros.put("tiempo_de_entrega", voReporteParametros.getTiempoDeEntrega());
-//		
-//		FileInputStream fis;
-//		try {
-//			fis = new FileInputStream("reportes//jasper//presupuestoProductoMN.jasper");
-//			BufferedInputStream bufferedInputStream = new BufferedInputStream(fis);
-//	 
-//			JasperReport jasperReport = (JasperReport) JRLoader.loadObject(bufferedInputStream); 
-//			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parametros,new JREmptyDataSource());
-//
-//			Properties p = new Properties();
-//			p.load(new FileInputStream("config/parametros.txt"));
-//			String rutaArchivoAdjunto = p.getProperty("carpeta_reportes");
-//
-//			// Se crea el archivo pdf con el nombre:
-//			// Ejemplo: Cotizacion_ESPACIO_180926-01_Fernando_Pelaez.pdf
-//			String cotizacion=(String)parametros.get("cotizacion");
-//			String cliente=(String)parametros.get("cliente");
-//			String nombreArchivoAdjunto="Cotizacion_PRODUCTO_" + cotizacion + "_" + cliente.replace(' ' , '_') +".pdf" ;
-//
-//			JasperExportManager.exportReportToPdfFile(jasperPrint,rutaArchivoAdjunto + nombreArchivoAdjunto);
-//			
-//		} catch (FileNotFoundException | JRException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 
 	}
 

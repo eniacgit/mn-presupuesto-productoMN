@@ -1,13 +1,30 @@
 <center>
-	<strong>Presupuesto ProductoMN</strong>
+	<h3>
+		<strong>Presupuesto ProductoMN</strong>
+	</h3>
 	<p>Seleccionar Producto</p>
 </center>
 
 <form role="form" class="form-horizontal">
 
   <script cam-script type="text/form-script">	
-	
 
+	//traer variable 'producto' creada en: categoria-form
+	camForm.on('form-loaded', function() {
+  		camForm.variableManager.fetchVariable('productoJson');
+	});
+	camForm.on('variables-fetched', function() {
+  		$scope.producto = camForm.variableManager.variableValue('productoJson');
+	});
+
+	var presupuesto = $scope.presupuesto = {};
+	camForm.on('form-loaded', function() {
+    camForm.variableManager.createVariable({
+        name: 'presupuesto',
+        type: 'json',
+        value: presupuesto
+      });
+    });
 
   </script>
 
@@ -16,9 +33,7 @@
     
      <label for="CLIENTE" class="control-label">Cliente</label>
      <input  class= "form-control"
-      		 name="CLIENTE" 
              cam-variable-name="CLIENTE"
-             cam-variable-type="String"
              readonly  />
         
     <label for="CATEGORIA_SELECCIONADA" class="control-label">Categoria</label>
@@ -29,22 +44,40 @@
       
     <label for="producto" class="control-label">Producto</label>
     <br>
-    <select 
-     		 cam-variable-name="producto"
+    <select  cam-variable-name="producto"
              cam-variable-type="String"
              cam-choices="PRODUCTOS_DISPONIBLES"
              required
+             ng-model= "producto.nombre"
              class="form-control">
 	</select>
 	
 	<br>
-	     <label for="cambiarCategoria">Cambiar categoría</label>
-	     <input type="checkbox"
-	            cam-variable-name="cambiarCategoria"
-	            cam-variable-type="Boolean"
-	            name="cambiarCategoria"
-	            class="form-control" />
+	<label class="control-label">Unidades</label>
+    <input type="number"
+    	   class="form-control"
+    	   name="UNIDADES"
+    	   cam-variable-name="UNIDADES"
+    	   cam-variable-type="String"
+    	   required
+    	   ng-model="presupuesto.unidades"
+    	   min="1"
+    	   />
 	
+	<!--validar ingreso de unidades-->
+    <p>
+      <span style="color:red" ng-show="form.UNIDADES.$dirty && form.UNIDADES.$invalid">
+  		<span ng-show="form.UNIDADES.$error.required">unidades es obligatorio</span>
+  	  </span>
+    </p>
+	
+	<br>
+	<label for="cambiarCategoria">Cambiar categoría</label>
+	<input type="checkbox"
+	       cam-variable-name="cambiarCategoria"
+	       cam-variable-type="Boolean"
+	       name="cambiarCategoria"
+	       class="form-control" />
   	</div>
   </div>
 </form>

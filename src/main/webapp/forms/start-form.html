@@ -1,14 +1,16 @@
 <center>
-	<strong>Presupuesto ProductoMN</strong>
+	<h3>
+		<strong>Presupuesto ProductoMN</strong>
+	</h3>
 	<p>Ingresar Datos del Cliente</p>
 </center>
 <form role="form" name="form" class="form-horizontal" >
 
   <script cam-script type="text/form-script">
   
-	var cliente = $scope.cliente = {};
 	$scope.tipoClientes=["CORPORATIVO","CONSUMIDOR FINAL"]
-    
+   
+	var cliente = $scope.cliente = {};
 	camForm.on('form-loaded', function() {
     // declaro una variable 'json' nombrada 'cliente' 
     camForm.variableManager.createVariable({
@@ -26,7 +28,7 @@
 
   <div class="control-group">
     <div class="controls">
-      
+
       <label for="CLIENTE" class="control-label">Cliente *</label>
       <input type="text"
       		 class= "form-control"
@@ -35,15 +37,14 @@
              cam-variable-type="String"
              maxlength=100
              required
-             ng-model="cliente.nombre"
-             class="form-control" />
+             ng-model="cliente.nombre"/>
              
-      		<!--validar ingreso de cliente-->
-      		<p>
-      			<span style="color:red" ng-show="form.CLIENTE.$dirty && form.CLIENTE.$invalid">
-  					<span ng-show="form.CLIENTE.$error.required">cliente es obligatorio</span>
-  				</span>
-      		</p>
+      <!--validar ingreso de cliente-->
+      <p>
+        <span style="color:red" ng-show="form.CLIENTE.$dirty && form.CLIENTE.$invalid">
+  		  <span ng-show="form.CLIENTE.$error.required">cliente es obligatorio</span>
+  		</span>
+      </p>
       
       <label for="TIPO_CLIENTE" class="control-label">Tipo de Cliente *</label>
       <br>
@@ -63,8 +64,7 @@
                cam-variable-type="String"
                maxlength=100
                required
-               ng-model="cliente.rut"
-               class="form-control" />
+               ng-model="cliente.rut"/>
             
         <!--validar ingreso de rut-->
       	<p>
@@ -81,16 +81,14 @@
                cam-variable-type="String"
                maxlength=100
                required
-               ng-model="cliente.razonSocial"
-               class="form-control" />
-      
+               ng-model="cliente.razonSocial"/>
+               
       	<!--validar ingreso de razón social-->
       	<p>
       		<span style="color:red" ng-show="form.RAZON_SOCIAL.$dirty && form.RAZON_SOCIAL.$invalid">
   				<span ng-show="form.RAZON_SOCIAL.$error.required">razón social es obligatoria</span>
   			</span>
       	</p>
-      	
       </div>
       
       <br>
@@ -103,8 +101,7 @@
              maxlength=50
              required
              ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/"
-             ng-model="cliente.email"
-             class="form-control" />
+             ng-model="cliente.email"/>
              
              <!--validar ingreso de email-->
       		<p>
@@ -131,12 +128,12 @@
              required
              name="CELULAR" />
              
-              <!--validar ingreso de celular-->
-      		 <p>
-      			<span style="color:red" ng-show="form.CELULAR.$dirty && form.CELULAR.$invalid">
-  					<span ng-show="form.CELULAR.$error.required">celular es obligatorio</span>
-  				</span>
-      		 </p>
+      <!--validar ingreso de celular-->
+      <p>
+        <span style="color:red" ng-show="form.CELULAR.$dirty && form.CELULAR.$invalid">
+  		  <span ng-show="form.CELULAR.$error.required">celular es obligatorio</span>
+  		</span>
+      </p>
       
       <label for="DIRECCION" class="control-label">Dirección de Entrega</label>
       <input class= "form-control"

@@ -1,5 +1,7 @@
 <center>
-	<strong>Presupuesto ProductoMN</strong>
+	<h3>
+		<strong>Presupuesto ProductoMN</strong>
+	</h3>
 	<p>Seleccionar Categoria</p>
 </center>
 
@@ -13,6 +15,16 @@
 	// y son desplegadas en el control html 'select'. 
 	// El indice de la categoria seleccionada se obtiene en el proximo task form
 	// a traves del nombre "categoria"
+
+	var producto = $scope.producto = {};
+	camForm.on('form-loaded', function() {
+    camForm.variableManager.createVariable({
+        name: 'productoJson',
+        type: 'json',
+        value: producto
+      });
+    });
+
   </script>
 
   <div class="control-group">
@@ -30,6 +42,7 @@
       		 cam-variable-name="categoria"
              cam-variable-type="String"
              cam-choices="CATEGORIAS_DISPONIBLES"
+             ng-model="producto.categoria"
              required
              class="form-control">
 	  </select>

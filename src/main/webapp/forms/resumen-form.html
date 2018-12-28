@@ -1,5 +1,7 @@
 <center>
-	<strong>Presupuesto ProductoMN</strong>
+	<h3>
+		<strong>Presupuesto ProductoMN</strong>
+	</h3>
 	<p>Resumen Datos Cliente - Producto</p>
 </center>
 
@@ -7,6 +9,29 @@
 
   <script cam-script type="text/form-script">
 	
+	//traer variable 'cliente' ingresada en: start-form	
+	camForm.on('form-loaded', function() {
+  		camForm.variableManager.fetchVariable('cliente');
+	});
+	camForm.on('variables-fetched', function() {
+  		$scope.cliente = camForm.variableManager.variableValue('cliente');
+	});
+
+	//traer variable 'producto' creada en: categoria-form	
+	camForm.on('form-loaded', function() {
+  		camForm.variableManager.fetchVariable('productoJson');
+	});
+	camForm.on('variables-fetched', function() {
+  		$scope.producto = camForm.variableManager.variableValue('productoJson');
+	});
+
+	camForm.on('form-loaded', function() {
+  		camForm.variableManager.fetchVariable('presupuesto');
+	});
+	camForm.on('variables-fetched', function() {
+  		$scope.presupuesto = camForm.variableManager.variableValue('presupuesto');
+	});
+
   </script>
   
   <div class="control-group">
@@ -51,66 +76,68 @@
    	  <input cam-variable-name="PRODUCTO_SELECCIONADO"
           	 class="form-control"
      	   	 readonly>
-     	  	      		
-   	<label for="moneda" class="control-label">Moneda</label>
-    <select cam-variable-name="moneda" cam-variable-type="String" class="form-control">
+     
+     <label class="control-label">Unidades</label>
+     <input cam-variable-name="UNIDADES"
+    	    class="form-control"
+    	    readonly>
+	      		
+   	  <label for="moneda" class="control-label">Moneda</label>
+      <select cam-variable-name="moneda" cam-variable-type="String" class="form-control">
   		<option value="dolares" checked>U$S</option>
   		<option value="pesos" >$</option>
-	</select>
+	  </select>
    		   		   		
-    <label for="PRECIO" class="control-label">Precio</label>
-   	<input type="text" 
-    	   cam-variable-name="PRECIO"
-    	   class="form-control">
+      <label for="PRECIO" class="control-label">Precio</label>
+   	  <input type="text" 
+    	     cam-variable-name="PRECIO"
+    	     class="form-control">
    		   		
-   	<label for="DESCRIPCION" class="control-label">Descripcion</label>   		
-   	<br>
-   	<textarea cam-variable-name="DESCRIPCION" cam-variable-type="String" rows= 2  class= "form-control" ></textarea>
+   	  <label for="DESCRIPCION" class="control-label">Descripcion</label>   		
+   	  <br>
+   	  <textarea cam-variable-name="DESCRIPCION" cam-variable-type="String" rows= 2  class= "form-control" ></textarea>
    	       	    
-   	    <label for="DIMENSIONES" class="control-label">Dimensiones</label>
-   		<input type="text" 
-    	   cam-variable-name="DIMENSIONES"
-    	   class="form-control">
+   	  <label for="DIMENSIONES" class="control-label">Dimensiones</label>
+   	  <input type="text" 
+    	     cam-variable-name="DIMENSIONES"
+    	     class="form-control">
     	   
-    	<label for="CONDICIONES" class="control-label">Condiciones</label>   		
-   		<br>
-   	    <textarea cam-variable-name="CONDICIONES" cam-variable-type="String" rows= 7  class= "form-control" ></textarea>
+      <label for="CONDICIONES" class="control-label">Condiciones</label>   		
+   	  <br>
+   	  <textarea cam-variable-name="CONDICIONES" cam-variable-type="String" rows= 7  class= "form-control" ></textarea>
    	    
-    	<label for="FORMA_DE_PAGO" class="control-label">Forma de Pago</label>   		
-   		<br>
-   	    <textarea cam-variable-name="FORMA_DE_PAGO" cam-variable-type="String" rows= 5  class= "form-control" ></textarea>
+      <label for="FORMA_DE_PAGO" class="control-label">Forma de Pago</label>   		
+   	  <br>
+   	  <textarea cam-variable-name="FORMA_DE_PAGO" cam-variable-type="String" rows= 5  class= "form-control" ></textarea>
     	
-    	<label for="TIEMPO_DE_ENTREGA" class="control-label">Tiempo de Entrega</label>   		
-   		<br>
-   	    <textarea cam-variable-name="TIEMPO_DE_ENTREGA" cam-variable-type="String" rows= 2  class= "form-control" ></textarea>
+      <label for="TIEMPO_DE_ENTREGA" class="control-label">Tiempo de Entrega</label>   		
+   	  <br>
+   	  <textarea cam-variable-name="TIEMPO_DE_ENTREGA" cam-variable-type="String" rows= 2  class= "form-control" ></textarea>
     	
-    	
-   		<label for="tipoCliente" class="control-label">Tipo de Cliente</label>
-      	<select cam-variable-name="tipoCliente" cam-variable-type="String" class="form-control">
-  			<option value="consumidor" checked>CONSUMIDOR FINAL</option>
-  			<option value="corporativo">CORPORATIVO</option>  			
-	  	</select> 
-   		
-   		<label for="DESCUENTO" class="control-label">Descuento %</label>
-   		<input type="text"
-       		cam-variable-name="DESCUENTO"
-       		cam-variable-type="String"
-       		class="form-control" />
+   	  <label class="control-label">Tipo de Cliente</label>
+      <input class="form-control"
+        	 ng-model="cliente.tipo"
+             readonly />
+     
+   	  <label for="DESCUENTO" class="control-label">Descuento %</label>
+   	  <input type="text"
+             cam-variable-name="DESCUENTO"
+       		 cam-variable-type="String"
+       		 class="form-control" />
    		   		
-   		<label for="SOBRECOSTO" class="control-label">Sobrecosto %</label>
-   		<input type="text"
-       		cam-variable-name="SOBRECOSTO"
-       		cam-variable-type="String"
-       		class="form-control" />
+   	  <label for="SOBRECOSTO" class="control-label">Sobrecosto %</label>
+   	  <input type="text"
+        	 cam-variable-name="SOBRECOSTO"
+       		 cam-variable-type="String"
+       		 class="form-control" />
        		
-       	<br>
-	     <label for="cambiarProducto">Cambiar producto</label>
-	     <input type="checkbox"
-	            cam-variable-name="cambiarProducto"
-	            cam-variable-type="Boolean"
-	            name="cambiarProducto"
-	            class="form-control" />
-   		   		   	    
+      <br>
+	  <label for="cambiarProducto">Cambiar producto</label>
+	  <input type="checkbox"
+	         cam-variable-name="cambiarProducto"
+	         cam-variable-type="Boolean"
+	         name="cambiarProducto"
+	         class="form-control" />   		   	    
   	</div>
  </div>
  

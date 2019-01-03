@@ -16,13 +16,17 @@ public class ResumenDelegate implements JavaDelegate {
 		Double sobrecosto;
 		Double precio;
 		Double precioFinal;
+		Integer unidades;
 		
 		String descuentoStr=(String)execution.getVariable("DESCUENTO");
 		descuento= Double.parseDouble(descuentoStr);
 		String sobrecostoStr=(String)execution.getVariable("SOBRECOSTO");
 		sobrecosto= Double.parseDouble(sobrecostoStr);
+		String unidadesStr= (String)execution.getVariable("UNIDADES");
+		unidades= Integer.parseInt(unidadesStr);
+		
 		precio= (Double)execution.getVariable("PRECIO");		
-		VOPrecio voPrecio= new VOPrecio(descuento,sobrecosto,precio);		
+		VOPrecio voPrecio= new VOPrecio(descuento,sobrecosto,precio,unidades);		
 		
 		//pre-condicion: se ingresa solamente descuento o sobrecosto. 
 		

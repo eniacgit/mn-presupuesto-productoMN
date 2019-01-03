@@ -5,12 +5,14 @@ public class VOPrecio {
 	private Double descuento;
 	private Double sobrecosto;
 	private Double precio;
+	private Integer unidades;
 	
-	public VOPrecio(Double descuento, Double sobrecosto, Double precio) {
+	public VOPrecio(Double descuento, Double sobrecosto, Double precio, Integer unidades) {
 		super();
 		this.descuento = descuento;
 		this.sobrecosto = sobrecosto;
 		this.precio = precio;
+		this.unidades= unidades;
 	}
 	
 	public Double getDescuento() {
@@ -31,4 +33,11 @@ public class VOPrecio {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
+	public Integer getUnidades() {
+		return this.unidades;
+	}
+	public void setUnidades(Integer unidades) {
+		this.unidades= unidades;
+	}
+	
 }

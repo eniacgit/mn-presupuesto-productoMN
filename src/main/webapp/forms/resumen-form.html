@@ -17,7 +17,7 @@
   		$scope.cliente = camForm.variableManager.variableValue('cliente');
 	});
 
-	//traer variable 'producto' creada en: categoria-form	
+	//traer variable 'productoJson' creada en: categoria-form	
 	camForm.on('form-loaded', function() {
   		camForm.variableManager.fetchVariable('productoJson');
 	});
@@ -36,7 +36,7 @@
   
   <div class="control-group">
     <div class="controls">
-    	
+         	
       <label for="COTIZACION" class="control-label">Cotización (fecha-número)</label>
       <input class="form-control"
       		 cam-variable-name="COTIZACION"
@@ -83,52 +83,101 @@
     	    readonly>
 	      		
    	  <label for="moneda" class="control-label">Moneda</label>
-      <select cam-variable-name="moneda" cam-variable-type="String" class="form-control">
+      <select cam-variable-name="moneda" cam-variable-type="String" class="form-control" 
+              ng-model="producto.moneda">
   		<option value="dolares" checked>U$S</option>
   		<option value="pesos" >$</option>
 	  </select>
-   		   		   		
-      <label for="PRECIO" class="control-label">Precio</label>
-   	  <input type="text" 
+	       		   		
+      <label for="PRECIO" class="control-label">Precio Unitario</label>
+   	  <input type="number" 
     	     cam-variable-name="PRECIO"
+    	     ng-model="producto.precio"
+    	     min="1"
+    	     required
+    	     name="PRECIO"
     	     class="form-control">
+      <!--validar ingreso de precio-->
+      <p>
+        <span style="color:red" ng-show="form.PRECIO.$dirty && form.PRECIO.$invalid">
+  		  <span ng-show="form.PRECIO.$error.required">precio es obligatorio</span>
+  	    </span>
+      </p>
    		   		
    	  <label for="DESCRIPCION" class="control-label">Descripcion</label>   		
    	  <br>
-   	  <textarea cam-variable-name="DESCRIPCION" cam-variable-type="String" rows= 2  class= "form-control" ></textarea>
-   	       	    
+   	  <textarea cam-variable-name="DESCRIPCION" cam-variable-type="String" rows= 2  ng-model="presupuesto.descripcion" required name="DESCRIPCION" class= "form-control"></textarea>
+   	  <!--validar ingreso de descripcion-->
+      <p>
+        <span style="color:red" ng-show="form.DESCRIPCION.$dirty && form.DESCRIPCION.$invalid">
+  		  <span ng-show="form.DESCRIPCION.$error.required">descripcion es obligatorio</span>
+  	    </span>
+      </p>
+   	  
    	  <label for="DIMENSIONES" class="control-label">Dimensiones</label>
    	  <input type="text" 
     	     cam-variable-name="DIMENSIONES"
+    	     ng-model="producto.dimensiones"
+    	     required
+    	     name="DIMENSIONES"
     	     class="form-control">
-    	   
+	  <!--validar ingreso de dimensiones-->
+      <p>
+        <span style="color:red" ng-show="form.DIMENSIONES.$dirty && form.DIMENSIONES.$invalid">
+  		  <span ng-show="form.DIMENSIONES.$error.required">dimensiones es obligatorio</span>
+  	    </span>
+      </p>
+	  
+		    	   
       <label for="CONDICIONES" class="control-label">Condiciones</label>   		
    	  <br>
-   	  <textarea cam-variable-name="CONDICIONES" cam-variable-type="String" rows= 7  class= "form-control" ></textarea>
+   	  <textarea cam-variable-name="CONDICIONES" cam-variable-type="String" rows= 7 ng-model="presupuesto.condiciones" required name="CONDICIONES" class= "form-control" ></textarea>
+   	  <!--validar ingreso de condiciones-->
+      <p>
+        <span style="color:red" ng-show="form.CONDICIONES.$dirty && form.CONDICIONES.$invalid">
+  		  <span ng-show="form.CONDICIONES.$error.required">condiciones es obligatorio</span>
+  	    </span>
+      </p>
    	    
       <label for="FORMA_DE_PAGO" class="control-label">Forma de Pago</label>   		
    	  <br>
-   	  <textarea cam-variable-name="FORMA_DE_PAGO" cam-variable-type="String" rows= 5  class= "form-control" ></textarea>
-    	
+   	  <textarea cam-variable-name="FORMA_DE_PAGO" cam-variable-type="String" rows= 5 ng-model="presupuesto.formaDePago" required name="FORMA_DE_PAGO" class= "form-control" ></textarea>
+      <!--validar ingreso de forma de pago-->
+      <p>
+        <span style="color:red" ng-show="form.FORMA_DE_PAGO.$dirty && form.FORMA_DE_PAGO.$invalid">
+  		  <span ng-show="form.FORMA_DE_PAGO.$error.required">forma de pago es obligatorio</span>
+  	    </span>
+      </p>
+      	
       <label for="TIEMPO_DE_ENTREGA" class="control-label">Tiempo de Entrega</label>   		
    	  <br>
-   	  <textarea cam-variable-name="TIEMPO_DE_ENTREGA" cam-variable-type="String" rows= 2  class= "form-control" ></textarea>
-    	
+   	  <textarea cam-variable-name="TIEMPO_DE_ENTREGA" cam-variable-type="String" rows= 2 ng-model="presupuesto.tiempoDeEntrega" required name="TIEMPO_DE_ENTREGA" class= "form-control" ></textarea>
+      <!--validar ingreso de tiempo de entrega-->
+      <p>
+        <span style="color:red" ng-show="form.TIEMPO_DE_ENTREGA.$dirty && form.TIEMPO_DE_ENTREGA.$invalid">
+  		  <span ng-show="form.TIEMPO_DE_ENTREGA.$error.required">tiempo de entrega es obligatorio</span>
+  	    </span>
+      </p>	
+     	
    	  <label class="control-label">Tipo de Cliente</label>
       <input class="form-control"
         	 ng-model="cliente.tipo"
              readonly />
      
-   	  <label for="DESCUENTO" class="control-label">Descuento %</label>
+   	  <label for="DESCUENTO" class="control-label">Descuento % (por unidad)</label>
    	  <input type="text"
              cam-variable-name="DESCUENTO"
        		 cam-variable-type="String"
+       		 ng-model="producto.descuento"
+       		 min="0"
        		 class="form-control" />
    		   		
-   	  <label for="SOBRECOSTO" class="control-label">Sobrecosto %</label>
+   	  <label for="SOBRECOSTO" class="control-label">Sobrecosto % (por unidad)</label>
    	  <input type="text"
         	 cam-variable-name="SOBRECOSTO"
        		 cam-variable-type="String"
+       		 ng-model="producto.sobrecosto"
+       		 min="0"
        		 class="form-control" />
        		
       <br>

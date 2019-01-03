@@ -182,8 +182,8 @@ public class Fachada{
 		
 		Double descuento= voPrecio.getDescuento();
 		Double sobrecosto= voPrecio.getSobrecosto();
-		
-		
+		Integer unidades= voPrecio.getUnidades();
+	
 		if(descuento !=0)
 		{
 			descuento= (descuento * precio)/100;
@@ -195,7 +195,7 @@ public class Fachada{
 			precioFinal= precio + sobrecosto;
 		}
 		
-		return precioFinal;
+		return precioFinal * unidades;
 	}
 	
 	public void generarReporte(VOReporte voReporteParametros)

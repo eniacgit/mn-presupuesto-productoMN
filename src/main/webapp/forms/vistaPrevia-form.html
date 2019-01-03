@@ -25,6 +25,13 @@
   		$scope.producto = camForm.variableManager.variableValue('productoJson');
 	});
 
+	camForm.on('form-loaded',function() {
+		camForm.variableManager.fetchVariable('moneda');
+	});
+	camForm.on('variables-restored',function() {
+		$scope.moneda=camForm.variableManager.variableValue('moneda');
+	});
+
 	camForm.on('form-loaded', function() {
   		camForm.variableManager.fetchVariable('presupuesto');
 	});
@@ -83,7 +90,7 @@
 		  <span ng-if="moneda == 'pesos'">$</span>
 	  </address>
    		   		
-     <label for="PRECIO" class="control-label">Precio</label>
+     <label for="PRECIO" class="control-label">Precio Unitario</label>
    	 <input cam-variable-name="PRECIO"
     	    readonly
     	    class="form-control" />
@@ -115,13 +122,13 @@
          	ng-model="cliente.tipo"
             readonly />
    	 
-   	 <label for="DESCUENTO" class="control-label">Descuento %</label>
+   	 <label for="DESCUENTO" class="control-label">Descuento % (por unidad)</label>
    	 <input type="text"
        	    cam-variable-name="DESCUENTO"
        		class="form-control" 
        		readonly />
    		   		
-   	 <label for="SOBRECOSTO" class="control-label">Sobrecosto %</label>
+   	 <label for="SOBRECOSTO" class="control-label">Sobrecosto % (por unidad)</label>
    	 <input type="text"
        		cam-variable-name="SOBRECOSTO"
        		class="form-control" 

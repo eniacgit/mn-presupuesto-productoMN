@@ -219,6 +219,7 @@ public class Fachada{
 			moneda = "$U";
 		
 		parametros.put("precio","Precio unitario ("+ moneda +"): "  + voReporteParametros.getPrecio());
+		parametros.put("unidades","Unidades: "  + voReporteParametros.getUnidades());
 		parametros.put("descuento", "Descuento (%): " + voReporteParametros.getDescuento());
 		parametros.put("sobrecosto", "Sobre costo (%): " + voReporteParametros.getSobreCosto());
 		parametros.put("precioFinal", "Precio final (" + moneda + "): " + voReporteParametros.getPrecioFinal());

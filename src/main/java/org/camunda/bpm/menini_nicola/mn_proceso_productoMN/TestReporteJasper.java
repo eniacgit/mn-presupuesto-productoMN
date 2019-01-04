@@ -16,7 +16,7 @@ public class TestReporteJasper {
 		voReporte.setNombreProducto("SILLA JESSIE");
 		voReporte.setMoneda("USD");
 		voReporte.setPrecio("570");
-		voReporte.setDescripcion("iviana y sin un ambiente definido, la silla JESSIE es una propuesta del estudio reaccionando frente a la actual escasez de oferta en sillas en madera del mercado. Su estilo relacionado con el diseño escandinavo llevó a ser seleccionada para formar parte del mobiliario del Café Allegro en el Teatro Solís!");
+		voReporte.setDescripcion("Liviana y sin un ambiente definido, la silla JESSIE es una propuesta del estudio reaccionando frente a la actual escasez de oferta en sillas en madera del mercado. Su estilo relacionado con el diseño escandinavo llevó a ser seleccionada para formar parte del mobiliario del Café Allegro en el Teatro Solís!");
 		voReporte.setDimensiones("41 x 52 x 84 cm");
 		voReporte.setCondiciones("Precio en dólares americanos. Incluye impuestos y transporte dentro de Montevideo. Pago sin recargo con VISA, MasterCard y AmericanExpress. Tiempo de entrega 35 días (a confirmar al momento de la compra).\n" + 
 				"El diseño es exclusivo de menini-nicola");
@@ -28,6 +28,7 @@ public class TestReporteJasper {
 		voReporte.setPrecioFinal("565");
 		voReporte.setMateriales("Materiales: Madera de Peteribí.");
 		voReporte.setTerminacion("Terminación: Lustre PU.");
+		voReporte.setUnidades("2");
 		
 		
 		

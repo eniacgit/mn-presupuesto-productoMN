@@ -52,6 +52,7 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 		voReporteParametros.setDescuento((String)execution.getVariable("DESCUENTO"));
 		voReporteParametros.setSobreCosto((String)execution.getVariable("SOBRECOSTO"));
 		voReporteParametros.setPrecioFinal((String)execution.getVariable("PRECIO_FINAL"));
+		voReporteParametros.setUnidades((String)execution.getVariable("UNIDADES"));
 		
 		// obtengo materiales y terminacion
 		VOProductoMN productoMN= new VOProductoMN();

@@ -20,6 +20,7 @@
 	<parameter name="descuento" class="java.lang.String"/>
 	<parameter name="sobrecosto" class="java.lang.String"/>
 	<parameter name="precioFinal" class="java.lang.String"/>
+	<parameter name="unidades" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -149,7 +150,7 @@
 				<textFieldExpression><![CDATA[$P{terminacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="72" width="144" height="18" uuid="193929ca-9b49-41d9-b61b-5c32d3e2aca2"/>
+				<reportElement x="400" y="90" width="144" height="18" uuid="193929ca-9b49-41d9-b61b-5c32d3e2aca2"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
@@ -166,11 +167,18 @@
 				<reportElement x="399" y="134" width="145" height="1" uuid="aeec9cf8-d564-4b0d-b2a9-11e1f12edaf0"/>
 			</line>
 			<textField>
-				<reportElement x="400" y="100" width="144" height="18" uuid="6f9d07ec-6663-4f19-9b0b-b2787b7714e8"/>
+				<reportElement x="401" y="110" width="144" height="18" uuid="6f9d07ec-6663-4f19-9b0b-b2787b7714e8"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{sobrecosto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="67" width="146" height="16" uuid="5e5b8f6b-c51e-4b2d-948b-dd4e44f65f42"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{unidades}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="110">

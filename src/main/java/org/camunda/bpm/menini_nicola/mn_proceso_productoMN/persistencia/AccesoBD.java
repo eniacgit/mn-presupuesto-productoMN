@@ -125,7 +125,7 @@ public class AccesoBD {
 	}
 	
 	
-	public void insertarPresupuesto(String cotizacion, String fecha, String moneda, float costo, String condicionesVenta, String descripcion) throws  SQLException, IOException {
+	public void insertarPresupuesto(String cotizacion, String fecha, String moneda, Double costo, String condicionesVenta, String descripcion, Integer unidades) throws  SQLException, IOException {
 		// Ingresa un nuevo cliente al sistema
 		Connection con = this.conectarBD();
 		Consultas consultas = new Consultas();
@@ -135,9 +135,10 @@ public class AccesoBD {
 		pstmt.setString(1, cotizacion);
 		pstmt.setString(2, fecha);
 		pstmt.setString(3, moneda);
-		pstmt.setFloat(4, costo);
+		pstmt.setDouble(4, costo);
 		pstmt.setString(5, condicionesVenta);
 		pstmt.setString(6, descripcion);
+		pstmt.setInt(7, unidades);
 		pstmt.executeUpdate();
 		pstmt.close();
 		this.desconectarBD(con);

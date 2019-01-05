@@ -55,9 +55,9 @@ public class Fachada{
 		String email = cliente.getEmail();
 		String telefono = cliente.getTelefono();
 		String celular = cliente.getCelular();
-		String tipo= cliente.getTipo();
 		String rut = cliente.getRut();
 		String razonSocial= cliente.getRazonSocial();
+		String tipo= cliente.getTipo();
 		String direccion= cliente.getDireccion();
 		accesoBD.insertarCliente(nombre, email, telefono, celular,rut,razonSocial, tipo,direccion);
 	}
@@ -77,10 +77,11 @@ public class Fachada{
 		String cotizacion = presupuesto.getCotizacion();
 		String fecha = presupuesto.getFecha();
 		String moneda = presupuesto.getMoneda();
-		float costo = presupuesto.getCosto();
+		Double costo = presupuesto.getCosto();
 		String condicionesVenta = presupuesto.getCondicionesVenta();
 		String descripcion = presupuesto.getDescripcion();
-		accesoBD.insertarPresupuesto(cotizacion, fecha, moneda, costo,condicionesVenta, descripcion);
+		Integer unidades = presupuesto.getUnidades();
+		accesoBD.insertarPresupuesto(cotizacion, fecha, moneda, costo,condicionesVenta, descripcion, unidades);
 	}
 	
 	public int obtenerIdPresupuesto(String cotizacion) {

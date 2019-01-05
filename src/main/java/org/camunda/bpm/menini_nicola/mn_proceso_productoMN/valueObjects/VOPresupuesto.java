@@ -1,21 +1,22 @@
 package org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects;
 
 public class VOPresupuesto {
-	private int idPresupuesto;
+	private Integer idPresupuesto;
 	private String cotizacion;
 	private String  fecha;
 	private String moneda;
-	private float costo;
+	private Double costo;
 	private String condicionesVenta;
 	private String descripcion;
+	private Integer unidades;
 	
 	public VOPresupuesto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public VOPresupuesto(int idPresupuesto, String cotizacion, String fecha, String moneda, float costo,
-			String condicionesVenta, String descripcion) {
+	public VOPresupuesto(Integer idPresupuesto, String cotizacion, String fecha, String moneda, Double costo,
+			String condicionesVenta, String descripcion, Integer unidades) {
 		super();
 		this.idPresupuesto = idPresupuesto;
 		this.cotizacion = cotizacion;
@@ -24,13 +25,14 @@ public class VOPresupuesto {
 		this.costo = costo;
 		this.condicionesVenta = condicionesVenta;
 		this.descripcion = descripcion;
+		this.unidades= unidades;
 	}
 
-	public int getIdPresupuesto() {
+	public Integer getIdPresupuesto() {
 		return idPresupuesto;
 	}
 
-	public void setIdPresupuesto(int idPresupuesto) {
+	public void setIdPresupuesto(Integer idPresupuesto) {
 		this.idPresupuesto = idPresupuesto;
 	}
 
@@ -58,11 +60,11 @@ public class VOPresupuesto {
 		this.moneda = moneda;
 	}
 
-	public float getCosto() {
+	public Double getCosto() {
 		return costo;
 	}
 
-	public void setCosto(float costo) {
+	public void setCosto(Double costo) {
 		this.costo = costo;
 	}
 
@@ -82,6 +84,12 @@ public class VOPresupuesto {
 		this.descripcion = descripcion;
 	}
 	
+	public Integer getUnidades() {
+		return unidades;
+	}
 	
+	public void setUnidades(Integer unidades) {
+		this.unidades= unidades;
+	}
 	
 }

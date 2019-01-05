@@ -21,116 +21,81 @@ public class PersistirPresupuestoDelegate implements JavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 
 		Fachada fachada = new Fachada();
-		
-		//traer valores del formulario
-		
 		//traer datos del cliente		
 		Cliente cliente= new Cliente();
 		cliente = (Cliente)execution.getVariable("cliente");
 		
-//		String cliente= (String) execution.getVariable("CLIENTE");
-//		//tipo cliente
-//		String rut= (String) execution.getVariable("RUT");		
-//		String razonSocial= (String) execution.getVariable("RAZON_SOCIAL");
-//		String email= (String) execution.getVariable("EMAIL");
-//		String tel= (String)execution.getVariable("TEL");
-//		String celular= (String)execution.getVariable("CELULAR");
-//		String direccion= (String)execution.getVariable("DIRECCION");
-		
 		//traer datos del producto
-		String cotizacion= (String) execution.getVariable("COTIZACION");
 		String moneda= (String) execution.getVariable("moneda");
 		String precio=(String)execution.getVariable("PRECIO");
-		String descripcion= (String) execution.getVariable("DESCRIPCION");
-		String dimensiones= (String) execution.getVariable("DIMENSIONES");
-		String condiciones= (String) execution.getVariable("CONDICIONES");
-		String formaDePago= (String) execution.getVariable("FORMA_DE_PAGO");
-		String tiempoDeEntrega= (String) execution.getVariable("TIEMPO_DE_ENTREGA");
 		String descuento= (String) execution.getVariable("DESCUENTO");
 		String sobrecosto= (String) execution.getVariable("SOBRECOSTO");
-		String precioFinal= (String) execution.getVariable("PRECIO_FINAL");
-		
+			
 		//persistir datos del cliente
-		
 		VOCliente voCliente = new VOCliente();
 		voCliente.setNombre(cliente.getNombre());
 		voCliente.setEmail(cliente.getEmail());
 		voCliente.setTelefono(cliente.getTelefono());
 		voCliente.setCelular(cliente.getCelular());
-		voCliente.setTipo(cliente.getTipo());
 		voCliente.setRut(cliente.getRut());
 		voCliente.setRazonSocial(cliente.getRazonSocial());
+		voCliente.setTipo(cliente.getTipo());
 		voCliente.setDireccion(cliente.getDireccion());	 
 		
 		 if (!fachada.existeCliente(cliente.getNombre())) {
 			 fachada.insertarCliente(voCliente);
 		 }
 		 
-		 //persistir datos del presupuesto
+		//traer datos del presupuesto
+		String cotizacion= (String) execution.getVariable("COTIZACION");
+		String condiciones= (String) execution.getVariable("CONDICIONES");
+		String descripcion= (String) execution.getVariable("DESCRIPCION");
+		String precioFinal= (String) execution.getVariable("PRECIO_FINAL");
+		String unidades= (String) execution.getVariable("UNIDADES");
+		
+		if(moneda.equals("dolares"))
+		 moneda="USD";
+		else
+		 moneda="$U";		 
+		//estado: 2-rechazado, 1-aprobado, 0-no aprobado
+		byte estado= 1;
+		//formatear fecha
+		DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
+		Date date= new Date();
+		String fecha= dateFormat.format(date);
+		
+		//persistir datos del presupuesto 
+		VOPresupuesto voPresupuesto= new VOPresupuesto();
+		voPresupuesto.setCotizacion(cotizacion);
+		voPresupuesto.setFecha(fecha);
+		voPresupuesto.setMoneda(moneda);
+		voPresupuesto.setCosto(Double.parseDouble(precioFinal));
+		voPresupuesto.setCondicionesVenta(condiciones);
+		voPresupuesto.setDescripcion(descripcion);
+		voPresupuesto.setUnidades(Integer.parseInt(unidades));
+		fachada.insertarPresupuesto(voPresupuesto);
 		 
-		 if(moneda.equals("dolares"))
-			 moneda="USD";
-		 else
-			 moneda="$U";		 
-		 //estado: 1-aprobado, 0-no aprobado
-		 byte estado= 1;
-		 //formatear fecha
-		 DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
-		 Date date= new Date();
-		 String fecha= dateFormat.format(date);
+		//obtener Ids de inserts
+		int idPresupuesto= fachada.obtenerIdPresupuesto(voPresupuesto.getCotizacion());
+		int idCliente= fachada.obtenerIdCliente(voCliente.getNombre());
 		 
-		 VOPresupuesto voPresupuesto= new VOPresupuesto();
-		 voPresupuesto.setCotizacion(cotizacion);
-		 voPresupuesto.setFecha(fecha);
-		 voPresupuesto.setMoneda(moneda);
-		 voPresupuesto.setCondicionesVenta(condiciones);
-		 voPresupuesto.setDescripcion(descripcion);
+		VOClientePresupuesto voClientePresupuesto= new VOClientePresupuesto();
+		voClientePresupuesto.setEstado(estado);
+		voClientePresupuesto.setIdCliente(idCliente);
+		voClientePresupuesto.setIdPresupuesto(idPresupuesto);
 		 
-		 fachada.insertarPresupuesto(voPresupuesto);
+		fachada.insertarClientePresupuesto(voClientePresupuesto);
 		 
-		 //persistir datos del cliente-presupuesto
-		 
-		 //obtener Ids de inserts
-		 int idPresupuesto= fachada.obtenerIdPresupuesto(voPresupuesto.getCotizacion());
-		 int idCliente= fachada.obtenerIdCliente(voCliente.getNombre());
-		 
-		 VOClientePresupuesto voClientePresupuesto= new VOClientePresupuesto();
-		 voClientePresupuesto.setEstado(estado);
-		 voClientePresupuesto.setIdCliente(idCliente);
-		 voClientePresupuesto.setIdPresupuesto(idPresupuesto);
-		 
-		 fachada.insertarClientePresupuesto(voClientePresupuesto);
-		 
-
-		 // persitir categoria
-		 String categoria = (String)execution.getVariable("CATEGORIA_PRODUCTO");
-		 // LOG.info("\n## CATEGORIA: " + categoria);
-		 if (!fachada.existeCategoria(categoria)) {
-			 fachada.insertarCategoriaProducto(categoria);
-		 }		 
+		// persitir categoria
+		String categoria = (String)execution.getVariable("CATEGORIA_PRODUCTO");
+		if (!fachada.existeCategoria(categoria)) {
+		 fachada.insertarCategoriaProducto(categoria);
+		}		 
 	 
-		 //persistir datos del producto		 
-		 String nombreProducto= (String) execution.getVariable("PRODUCTO_SELECCIONADO");
-		 int idCategoria = fachada.obtenerIdCategoria(categoria);
+		//persistir datos del producto		 
+		String nombreProducto= (String) execution.getVariable("PRODUCTO_SELECCIONADO");
+		int idCategoria = fachada.obtenerIdCategoria(categoria);
 		 
-		 fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), idCategoria, idPresupuesto);
-		 
-		 
-		 
-		 
-		 
-		 
-		// LOG.info("\n## NOMBRE DEL PRODUCTO: " + nombreProducto);
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), idCategoria, idPresupuesto);
 	}
-
 }

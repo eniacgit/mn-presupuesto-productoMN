@@ -18,7 +18,7 @@ public class Consultas {
 	}
 	
 	public String insertarPresupuesto(){
-		String consulta = "INSERT INTO mn_presupuesto (cotizacion,fecha,moneda,costo,condicionesVenta,descripcion) VALUES(?,?,?,?,?,?);";
+		String consulta = "INSERT INTO mn_presupuesto (cotizacion,fecha,moneda,costo,condicionesVenta,descripcion,unidades) VALUES(?,?,?,?,?,?,?);";
 		return consulta;
 	}
 	

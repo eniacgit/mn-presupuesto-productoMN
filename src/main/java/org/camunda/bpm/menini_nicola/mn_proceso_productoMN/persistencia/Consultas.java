@@ -76,7 +76,7 @@ public class Consultas {
 	
 	public String insertarProducto() {
 		String consulta="\n" + 
-				"INSERT INTO mn_producto (nombre,descripcion,costo,descuento,sobreCosto,idCategoria,idPresupuesto) VALUES (?,?,?,?,?,?,?);";
+				"INSERT INTO mn_producto (nombre,descripcion,costo,descuento,sobreCosto,tipo,idCategoria,idPresupuesto) VALUES (?,?,?,?,?,?,?,?);";
 		return consulta;
 	}
 	

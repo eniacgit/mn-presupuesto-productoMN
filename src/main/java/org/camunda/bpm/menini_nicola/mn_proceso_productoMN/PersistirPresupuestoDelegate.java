@@ -95,7 +95,9 @@ public class PersistirPresupuestoDelegate implements JavaDelegate {
 		//persistir datos del producto		 
 		String nombreProducto= (String) execution.getVariable("PRODUCTO_SELECCIONADO");
 		int idCategoria = fachada.obtenerIdCategoria(categoria);
+		// tipo producto: 1-productoMN 2-producto diselo
+		int tipo= 1;
 		 
-		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), idCategoria, idPresupuesto);
+		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), tipo, idCategoria, idPresupuesto);
 	}
 }

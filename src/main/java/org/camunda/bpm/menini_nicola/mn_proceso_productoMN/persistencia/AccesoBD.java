@@ -329,7 +329,7 @@ public class AccesoBD {
 	
 		
 	
-	public void insertarProducto(String nombre, String descripcion, double costo, double descuento, double sobreCosto, int idCategoria, int idClientePresupuesto) throws  SQLException, IOException {
+	public void insertarProducto(String nombre, String descripcion, double costo, double descuento, double sobreCosto, int tipo, int idCategoria, int idClientePresupuesto) throws  SQLException, IOException {
 		// Ingresa un nuevo prpducto
 		Connection con = this.conectarBD();
 		Consultas consultas = new Consultas();
@@ -341,8 +341,9 @@ public class AccesoBD {
 		pstmt.setDouble(3, costo);
 		pstmt.setDouble(4, descuento);
 		pstmt.setDouble(5, sobreCosto);
-		pstmt.setInt(6, idCategoria);
-		pstmt.setInt(7, idClientePresupuesto);
+		pstmt.setInt(6, tipo);
+		pstmt.setInt(7, idCategoria);
+		pstmt.setInt(8, idClientePresupuesto);
 		pstmt.executeUpdate();
 		pstmt.close();
 		this.desconectarBD(con);

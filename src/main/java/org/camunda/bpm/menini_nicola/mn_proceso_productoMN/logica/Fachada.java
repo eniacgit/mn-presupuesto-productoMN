@@ -341,9 +341,9 @@ public class Fachada{
 		return accesoBD.obtenerUltimoIndiceInsertadoCategoria();
 	}
 	
-	public void insertarProducto(String nombre, String descripcion, double costo, double descuento, double sobreCosto, int idCategoria, int idClientePresupuesto) throws  SQLException, IOException {
+	public void insertarProducto(String nombre, String descripcion, double costo, double descuento, double sobreCosto,int tipo, int idCategoria, int idClientePresupuesto) throws  SQLException, IOException {
 		AccesoBD accesoBD = new AccesoBD();
-		accesoBD.insertarProducto(nombre, descripcion, costo, descuento, sobreCosto, idCategoria, idClientePresupuesto);
+		accesoBD.insertarProducto(nombre, descripcion, costo, descuento, sobreCosto, tipo, idCategoria, idClientePresupuesto);
 	}
 	
 	public int obtenerIdCategoria(String categoria) {

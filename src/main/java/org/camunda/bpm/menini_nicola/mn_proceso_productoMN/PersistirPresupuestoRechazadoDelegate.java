@@ -100,4 +100,5 @@ public class PersistirPresupuestoRechazadoDelegate implements JavaDelegate {
 				 
 		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), tipo, idCategoria, idPresupuesto);
 	}
+	
 }

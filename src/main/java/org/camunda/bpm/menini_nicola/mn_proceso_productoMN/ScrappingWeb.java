@@ -195,15 +195,15 @@ public class ScrappingWeb {
 			}
 			
 			
-			// obtengo el precio del producto
-			Elements precios = doc.select("p.price");			
-			for (Element precio: precios) {
-				// elimino simbolo de $ y convierto a double
-				//System.out.println((precio.text()).substring(1));
-				//double _precio = Double.parseDouble((precio.text()).substring(1).replace(',', '.'));
-				double _precio = Double.parseDouble(eliminarComa_o_puntoString((precio.text()).substring(1)));
-				producto.setPrecio(_precio);
-			}
+//			// obtengo el precio del producto
+//			Elements precios = doc.select("p.price");			
+//			for (Element precio: precios) {
+//				// elimino simbolo de $ y convierto a double
+//				//System.out.println((precio.text()).substring(1));
+//				//double _precio = Double.parseDouble((precio.text()).substring(1).replace(',', '.'));
+//				double _precio = Double.parseDouble(eliminarComa_o_puntoString((precio.text()).substring(1)));
+//				producto.setPrecio(_precio);
+//			}
 			
 			// obtengo descripcion del producto
 			Elements ps = doc.select("p");

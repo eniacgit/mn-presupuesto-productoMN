@@ -57,7 +57,7 @@ public class PersistirPresupuestoRechazadoDelegate implements JavaDelegate {
 		 moneda="USD";
 		else
 		 moneda="$U";		 
-		//estado: 0-rechazado, 1-aprobado
+		//estado: 0-rechazado 1-aprobado
 		byte estado= 0;
 		//formatear fecha
 		DateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
@@ -95,10 +95,8 @@ public class PersistirPresupuestoRechazadoDelegate implements JavaDelegate {
 		//persistir datos del producto		 
 		String nombreProducto= (String) execution.getVariable("PRODUCTO_SELECCIONADO");
 		int idCategoria = fachada.obtenerIdCategoria(categoria);
-		// tipo producto: 1-productoMN 2-producto diselo
-		int tipo= 1;
-				 
-		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), tipo, idCategoria, idPresupuesto);
+
+		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), idCategoria, idPresupuesto);
 	}
 	
 }

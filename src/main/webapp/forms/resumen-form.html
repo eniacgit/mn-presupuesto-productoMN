@@ -90,13 +90,15 @@
 	  </select>
 	       		   		
       <label for="PRECIO" class="control-label">Precio Unitario *</label>
-   	  <input type="number" 
+   	  <input type="text" 
     	     cam-variable-name="PRECIO"
     	     ng-model="producto.precio"
-    	     min="1"
     	     required
     	     name="PRECIO"
-    	     class="form-control">
+    	     class="form-control"
+    	     min="0"
+    	     ng-pattern="/^(?:[1-9]\d*|0)?(?:\.\d+)?$/"
+    	     onfocus="this.value=''">
       <!--validar ingreso de precio-->
       <p>
         <span style="color:red" ng-show="form.PRECIO.$dirty && form.PRECIO.$invalid">
@@ -164,21 +166,25 @@
         	 ng-model="cliente.tipo"
              readonly />
      
-   	  <label for="DESCUENTO" class="control-label">Descuento % (por unidad)</label>
+   	  <label for="DESCUENTO" class="control-label">Descuento % *(por unidad)</label>
    	  <input type="text"
              cam-variable-name="DESCUENTO"
        		 cam-variable-type="String"
        		 ng-model="producto.descuento"
        		 min="0"
-       		 class="form-control" />
+       		 class="form-control" 
+       		 ng-pattern="/^(?:[1-9]\d*|0)?(?:\.\d+)?$/"/
+       		 required>
    		   		
-   	  <label for="SOBRECOSTO" class="control-label">Sobrecosto % (por unidad)</label>
+   	  <label for="SOBRECOSTO" class="control-label">Sobrecosto % *(por unidad)</label>
    	  <input type="text"
         	 cam-variable-name="SOBRECOSTO"
        		 cam-variable-type="String"
        		 ng-model="producto.sobrecosto"
        		 min="0"
-       		 class="form-control" />
+       		 class="form-control" 
+       		 ng-pattern="/^(?:[1-9]\d*|0)?(?:\.\d+)?$/"/
+       		 required>
        		
       <br>
 	  <label for="cambiarProducto">Cambiar producto</label>

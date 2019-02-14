@@ -54,13 +54,14 @@
 	
 	<br>
 	<label class="control-label">Unidades *</label>
-    <input type="number"
+    <input type="text"
     	   class="form-control"
     	   name="UNIDADES"
     	   cam-variable-name="UNIDADES"
     	   cam-variable-type="String"
     	   required
     	   ng-model="presupuesto.unidades"
+    	   ng-pattern="/^-?[0-9][^\.]*$/"
     	   min="1"
     	   />
 	

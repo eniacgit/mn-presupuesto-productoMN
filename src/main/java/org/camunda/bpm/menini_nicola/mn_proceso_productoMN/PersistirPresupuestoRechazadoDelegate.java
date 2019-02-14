@@ -1,4 +1,9 @@
 package org.camunda.bpm.menini_nicola.mn_proceso_productoMN;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -97,6 +102,26 @@ public class PersistirPresupuestoRechazadoDelegate implements JavaDelegate {
 		int idCategoria = fachada.obtenerIdCategoria(categoria);
 
 		fachada.insertarProducto(nombreProducto, descripcion, Double.parseDouble(precio), Double.parseDouble(descuento), Double.parseDouble(sobrecosto), idCategoria, idPresupuesto);
+		
+		//guardar pdf en carpeta rechazados
+		String rutaArchivos= (String)execution.getVariable("rutaReportePDF");
+		String nombreReportePDF= (String)execution.getVariable("nombreReportePDF");
+		
+		moverArchivo(rutaArchivos + nombreReportePDF, rutaArchivos+"/RECHAZADOS/" + nombreReportePDF);
+
+	}
+	
+	// FUNCIONES AUXILIARES
+	private static void moverArchivo(String origen, String destino) {
+	Path origenPath = FileSystems.getDefault().getPath(origen);
+	Path destinoPath = FileSystems.getDefault().getPath(destino);
+
+	try {
+	Files.move(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
+	} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
 	}
 	
 }

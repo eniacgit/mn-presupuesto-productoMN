@@ -190,7 +190,7 @@
 				<text><![CDATA[CONDICIONES]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" x="0" y="20" width="560" height="30" uuid="3ab514bd-7d98-438b-81d0-88e65ea646ab"/>
+				<reportElement positionType="Float" x="0" y="20" width="560" height="80" uuid="3ab514bd-7d98-438b-81d0-88e65ea646ab"/>
 				<textFieldExpression><![CDATA[$P{condiciones}]]></textFieldExpression>
 			</textField>
 		</band>

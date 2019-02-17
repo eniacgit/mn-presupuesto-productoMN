@@ -2,10 +2,7 @@ package org.camunda.bpm.menini_nicola.mn_proceso_productoMN;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
@@ -17,7 +14,6 @@ import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOEmail;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOProductoMN;
 import org.camunda.bpm.menini_nicola.mn_proceso_productoMN.valueObjects.VOReporte;
 
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -91,9 +87,13 @@ public class EnviarPresupuestoDelegate implements JavaDelegate {
 
 		VOEmail voEmail = new VOEmail();
 		voEmail.setDestinatario(voReporteParametros.getEmail());
-		voEmail.setAsunto("Correo de prueba enviado desde proceso en camunda mediante Java");
-		voEmail.setCuerpo("Estimado " + voReporteParametros.getCliente() +
-				":\n\n Esta es una prueba de correo, y si lo estas viendo que es que quedó resuelto como mandar mails desde camunda...");
+		voEmail.setAsunto("Presupuesto: " + voReporteParametros.getNombreProducto() + " - Menini Nicola");
+		voEmail.setCuerpo("Estimado " + voReporteParametros.getCliente() + 
+				",\n\n Respondiendo a su solicitud adjuntamos el presupuesto del producto solicitado.\n\n"+
+				"Cualquier consulta quedamos a las órdenes.\n\n" +
+				"Saluda atte. \n\n\n" +
+				"El equipo de Menini Nicola\n" +
+				"https://menini-nicola.com");
 		voEmail.setLstArchivosAdjuntos(lstArchivosAdjuntos);
 
 		Fachada f = new Fachada();
